@@ -49,12 +49,94 @@ footer{background:#030611;color:#a5b2cf;border-top:1px solid #8296d033}
 @media(max-width:760px){.hero:before{width:220px;height:220px;right:-4%;top:35%}.hero:after{right:9%;top:43%;font-size:145px}.hero h1{font-size:clamp(36px,10vw,60px)}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
 
+
+/* VISUAL CLARITY + LAYOUT FIXES */
+.hero-feature{min-height:690px;padding:95px 8% 85px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:30px;background:radial-gradient(ellipse at 72% 48%,#263c78 0,#141d48 34%,#080d24 72%,#040714 100%)!important}
+.hero-copy{max-width:650px}.hero-copy h1{font-size:clamp(42px,6.2vw,78px);letter-spacing:-1.5px}.hero-subtitle{font-size:clamp(13px,1.6vw,18px);font-weight:800;letter-spacing:2.5px;color:#f4d18b!important}.hero-copy>p:not(.hero-subtitle){max-width:510px;color:#d3def4;font-size:17px}
+.hero-art{height:440px;position:relative;isolation:isolate}.hero-nebula{position:absolute;inset:12% 4%;border-radius:50%;background:radial-gradient(ellipse,#7656a866 0,transparent 65%);filter:blur(15px)}
+.hero-orbit{position:absolute;left:50%;top:50%;border:1px solid #a9c6ff66;border-radius:50%;transform:translate(-50%,-50%) rotate(-22deg)}
+.orbit-one{width:390px;height:190px}.orbit-two{width:310px;height:300px;transform:translate(-50%,-50%) rotate(58deg);border-color:#e8c78b44}
+.hero-sun{position:absolute;left:13%;top:38%;width:110px;height:110px;border-radius:50%;background:radial-gradient(circle at 36% 32%,#fff9cf,#ffd45f 38%,#f18a37 72%,#a83c36);box-shadow:0 0 25px #ffca65,0 0 75px #f38b45aa,0 0 130px #e77a3b55;animation:sunPulse 4s ease-in-out infinite}
+.hero-sun:before{content:"";position:absolute;inset:-18px;border:1px solid #ffdb8c77;border-radius:50%;animation:orbitSpin 22s linear infinite}
+.hero-earth{position:absolute;right:15%;top:34%;width:86px;height:86px;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 32% 28%,#a5f2e2,#2788bd 48%,#102b68 80%);box-shadow:inset -17px -9px 22px #030b2b99,0 0 38px #4dbfff99;animation:planetFloat 6s ease-in-out infinite}
+.hero-earth i{position:absolute;width:46px;height:35px;left:16px;top:17px;background:#75cf9c;clip-path:polygon(20% 0,70% 8%,100% 42%,70% 60%,65% 100%,35% 78%,0 45%);opacity:.9}
+.hero-moon{position:absolute;left:54%;top:68%;width:38px;height:38px;border-radius:50%;background:radial-gradient(circle at 30% 28%,#fff,#b6c2d5 70%,#647087);box-shadow:0 0 25px #d5e3ff88;animation:moonOrbit 9s ease-in-out infinite}
+@keyframes moonOrbit{0%,100%{transform:translate(0,0)}50%{transform:translate(65px,-42px)}}
+.hero-label{position:absolute;font-size:10px;letter-spacing:2px;color:#d9e7ff;font-weight:800;text-shadow:0 2px 8px #020611}.label-sun{left:8%;top:66%}.label-earth{right:8%;top:57%}.label-moon{left:55%;top:83%}
+.hero-bottom{position:absolute;left:8%;right:8%;bottom:24px;display:flex;justify-content:space-between;color:#8fa6d2;font-size:10px;letter-spacing:2px;border-top:1px solid #b1c7ff33;padding-top:14px}
+.eclipse-diagram{display:block;padding:20px 22px 16px!important;background:linear-gradient(120deg,#101a38,#202b56 55%,#11182f)!important}
+.diagram-heading{display:flex;justify-content:space-between;gap:16px;align-items:baseline;margin:0 0 8px;color:#f4d18b;font-size:13px;letter-spacing:1.5px}
+.diagram-heading span{font-size:12px;color:#c1d0ec;letter-spacing:0;font-weight:400}
+.eclipse-diagram svg{display:block;width:100%;height:auto;max-height:330px;overflow:visible}
+.diagram-caption{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:#c8d6ef;font-size:12px;border-top:1px solid #9db3e633;padding-top:12px}
+.caption-pill{border:1px solid #9d9be866;color:#e3d5ff;padding:3px 10px;border-radius:99px}
+.lunar-diagram{background:linear-gradient(120deg,#101a38,#202b56 55%,#11182f)!important;color:white!important}
+.section.dark{background:radial-gradient(ellipse at 50% 0,#1b3261,#080e22 68%)!important;color:#f2f5ff}
+.section.dark .heading>p{color:#bfcee8!important}
+.section.dark .card{background:linear-gradient(145deg,#1a2a4beF,#101a33f5)!important;border-color:#8296d044!important}
+.section.dark .card p{color:#c6d2e9!important}
+.section.dark .card h3{color:#f5e6c4!important}
+.section:not(.dark) .heading>p{color:#bac8e4}
+.section:not(.dark) .note{color:#edf2ff}
+.diagram:not(.eclipse-diagram){display:none}
+@media(max-width:760px){
+ .hero-feature{grid-template-columns:1fr;min-height:760px;padding:70px 7% 75px;gap:0}
+ .hero-art{height:330px;margin-top:5px}.orbit-one{width:300px;height:150px}.orbit-two{width:250px;height:240px}
+ .hero-sun{width:76px;height:76px;left:8%;top:39%}.hero-earth{width:64px;height:64px;right:8%;top:34%}
+ .hero-label{font-size:8px}.label-sun{left:4%;top:65%}.label-earth{right:2%;top:55%}
+ .hero-bottom{left:7%;right:7%;font-size:8px}
+ .diagram-heading{display:block}.diagram-heading span{display:block;margin-top:5px}
+ .eclipse-diagram{padding:14px 10px!important}.diagram-caption{font-size:10px}
+}
+
 </style></head><body>
 <header class="nav"><b>VẬT LÍ 10 <span>· CHUYÊN ĐỀ 06</span></b><nav><a href="#hanhtinh">Thiên thể</a><a href="#nhatthuc">Nhật thực</a><a href="#nguyetthuc">Nguyệt thực</a><a href="#thuytrieu">Thủy triều</a></nav></header>
-<section class="hero"><div class="eyebrow">KHÁM PHÁ VŨ TRỤ · VẬT LÍ 10</div><h1>NHẬT THỰC<br><em>NGUYỆT THỰC</em><br>& THỦY TRIỀU</h1><p>Ba hiện tượng thiên nhiên gắn liền với chuyển động của Trái Đất, Mặt Trăng và Mặt Trời.</p><a class="btn" href="#hanhtinh">Bắt đầu khám phá ↓</a></section>
+<section class="hero hero-feature">
+ <div class="hero-copy"><div class="eyebrow">KHÁM PHÁ VŨ TRỤ · VẬT LÍ 10 · CHUYÊN ĐỀ 06</div>
+ <h1>NHỮNG VŨ ĐIỆU<br><em>TRONG VŨ TRỤ</em></h1>
+ <p class="hero-subtitle">NHẬT THỰC · NGUYỆT THỰC · THỦY TRIỀU</p>
+ <p>Đi tìm lời giải cho những hiện tượng kỳ thú được tạo nên từ chuyển động và lực hấp dẫn giữa các thiên thể.</p>
+ <a class="btn" href="#hanhtinh">Bắt đầu hành trình <span aria-hidden="true">↓</span></a>
+ </div>
+ <div class="hero-art" aria-label="Minh họa Mặt Trời, Trái Đất và Mặt Trăng trên quỹ đạo">
+ <div class="hero-nebula"></div><div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div>
+ <div class="hero-sun"><span></span></div><div class="hero-earth"><i></i></div><div class="hero-moon"></div>
+ <div class="hero-label label-sun">MẶT TRỜI</div><div class="hero-label label-earth">TRÁI ĐẤT</div><div class="hero-label label-moon">MẶT TRĂNG</div>
+ </div>
+ <div class="hero-bottom"><span>01 — HỆ MẶT TRỜI</span><span>CUỘN XUỐNG ĐỂ KHÁM PHÁ ↓</span></div>
+ </section>
 <section class="section" id="hanhtinh"><div class="heading"><div class="eyebrow">01 / NỀN TẢNG KIẾN THỨC</div><h2>Trái Đất <em>và</em> Mặt Trăng</h2><p>Một số đặc điểm cơ bản giúp chúng ta hiểu rõ hơn về nhật thực và nguyệt thực.</p></div><div class="grid"><article class="card reveal"><div class="planet"></div><div class="eyebrow">HÀNH TINH</div><h3>Trái Đất</h3><p>Trái Đất có hình dạng gần như một khối cầu, hơi dẹt ở hai cực Bắc và Nam.</p><div class="stats"><div><strong>6.371 km</strong><small>Bán kính trung bình</small></div><div><strong>40.075 km</strong><small>Chu vi xích đạo</small></div><div><strong>510 triệu km²</strong><small>Diện tích bề mặt</small></div><div><strong>5,97 × 10²⁴ kg</strong><small>Khối lượng</small></div></div></article><article class="card reveal"><div class="planet moon"></div><div class="eyebrow">VỆ TINH TỰ NHIÊN</div><h3>Mặt Trăng</h3><p>Là vệ tinh tự nhiên duy nhất của Trái Đất, có kích thước nhỏ hơn Trái Đất khoảng 4 lần.</p><div class="stats"><div><strong>384.000 km</strong><small>Khoảng cách trung bình đến Trái Đất</small></div></div></article></div><div class="note reveal"><b>Chuyển động và quỹ đạo:</b><p>Trái Đất tự quay quanh trục với chu kì khoảng 24 giờ và quay quanh Mặt Trời với chu kì khoảng 365,25 ngày. Mặt phẳng quỹ đạo của Mặt Trăng nghiêng khoảng 5° so với mặt phẳng quỹ đạo Trái Đất quanh Mặt Trời. Vì vậy, không phải tháng nào cũng có nhật thực hoặc nguyệt thực.</p></div></section>
-<section class="section dark" id="nhatthuc"><div class="heading"><div class="eyebrow">02 / HIỆN TƯỢNG THIÊN VĂN</div><h2>Nhật <em>thực</em></h2><p>Nhật thực xảy ra khi Mặt Trăng đi vào vị trí giữa Mặt Trời và Trái Đất, che khuất ánh sáng Mặt Trời và tạo bóng lên bề mặt Trái Đất.</p></div><div class="diagram"><span class="orb"></span><b>Mặt Trời →</b><span class="orb moon"></span><b>→</b><span class="orb earth"></span><b>Trái Đất</b></div><div class="types"><article class="card reveal"><div class="eyebrow">01 · TOÀN PHẦN</div><h3>Nhật thực toàn phần</h3><p>Mặt Trăng che khuất hoàn toàn đĩa Mặt Trời đối với người quan sát trong vùng bóng tối.</p></article><article class="card reveal"><div class="eyebrow">02 · MỘT PHẦN</div><h3>Nhật thực một phần</h3><p>Mặt Trăng chỉ che khuất một phần đĩa Mặt Trời, khiến Mặt Trời trông như bị khuyết.</p></article><article class="card reveal"><div class="eyebrow">03 · HÌNH KHUYÊN</div><h3>Nhật thực hình khuyên</h3><p>Mặt Trăng có kích thước biểu kiến nhỏ hơn Mặt Trời, để lộ một vòng sáng bao quanh.</p></article></div><div class="timeline"><div><b>01 · Bắt đầu</b><p>Mặt Trăng bắt đầu che khuất Mặt Trời; phần bị che tăng dần.</p></div><div><b>02 · Cực đại</b><p>Hiện tượng đạt mức che khuất lớn nhất.</p></div><div><b>03 · Kết thúc</b><p>Mặt Trăng di chuyển ra khỏi vùng che khuất.</p></div></div><div class="warning"><b>Lưu ý an toàn:</b> Không nhìn trực tiếp vào Mặt Trời khi quan sát nhật thực. Chỉ sử dụng thiết bị quan sát chuyên dụng, đúng tiêu chuẩn.</div></section>
-<section class="section" id="nguyetthuc"><div class="heading"><div class="eyebrow">03 / HIỆN TƯỢNG THIÊN VĂN</div><h2>Nguyệt <em>thực</em></h2><p>Nguyệt thực xảy ra khi Trái Đất nằm giữa Mặt Trời và Mặt Trăng, khiến Mặt Trăng đi vào vùng bóng của Trái Đất.</p></div><div class="diagram" style="background:#e8e1d6;color:#27364c"><span class="orb"></span><b>Mặt Trời →</b><span class="orb earth"></span><b>→</b><span class="orb moon"></span><b>Mặt Trăng</b></div><div class="note reveal"><h3>Vì sao Mặt Trăng có thể chuyển màu đỏ cam?</h3><p>Khi xảy ra nguyệt thực toàn phần, ánh sáng Mặt Trời đi qua khí quyển Trái Đất bị tán xạ; phần ánh sáng đỏ có thể tiếp tục chiếu tới Mặt Trăng, khiến Mặt Trăng có màu đỏ cam.</p></div><div class="compare"><div><div class="eyebrow">NHẬT THỰC</div><h3>Mặt Trăng ở giữa</h3><p>Mặt Trời → Mặt Trăng → Trái Đất</p></div><div><div class="eyebrow">NGUYỆT THỰC</div><h3>Trái Đất ở giữa</h3><p>Mặt Trời → Trái Đất → Mặt Trăng</p></div></div></section>
+<section class="section dark" id="nhatthuc"><div class="heading"><div class="eyebrow">02 / HIỆN TƯỢNG THIÊN VĂN</div><h2>Nhật <em>thực</em></h2><p>Nhật thực xảy ra khi Mặt Trăng đi vào vị trí giữa Mặt Trời và Trái Đất, che khuất ánh sáng Mặt Trời và tạo bóng lên bề mặt Trái Đất.</p></div><div class="diagram eclipse-diagram solar-diagram">
+ <div class="diagram-heading"><b>MÔ HÌNH NHẬT THỰC</b><span>Mặt Trăng nằm giữa Mặt Trời và Trái Đất</span></div>
+ <svg viewBox="0 0 900 300" role="img" aria-labelledby="solarTitle solarDesc">
+ <title id="solarTitle">Sơ đồ hiện tượng nhật thực</title><desc id="solarDesc">Mặt Trời ở bên trái, Mặt Trăng nằm giữa và che ánh sáng, bóng tối của Mặt Trăng chiếu lên Trái Đất ở bên phải.</desc>
+ <defs><radialGradient id="sunGrad"><stop stop-color="#fff6bb"/><stop offset=".55" stop-color="#ffc34e"/><stop offset="1" stop-color="#ed762f"/></radialGradient><radialGradient id="earthGrad" cx="30%" cy="28%"><stop stop-color="#7be0dc"/><stop offset=".55" stop-color="#2789bd"/><stop offset="1" stop-color="#102b69"/></radialGradient><radialGradient id="moonGrad" cx="32%" cy="25%"><stop stop-color="#f8fbff"/><stop offset=".7" stop-color="#aeb9ca"/><stop offset="1" stop-color="#59657c"/></radialGradient></defs>
+ <path d="M140 95 L450 132 L770 92 L770 208 L450 168 L140 205Z" fill="#ffdc83" opacity=".10"/>
+ <path d="M450 139 L770 153 L770 177 L450 161Z" fill="#090d25" opacity=".9" stroke="#b6a8ff" stroke-dasharray="5 5"/>
+ <path d="M140 95 L450 140 M140 205 L450 160" stroke="#ffd77b" stroke-width="2" stroke-dasharray="7 7" opacity=".8"/>
+ <circle cx="140" cy="150" r="58" fill="url(#sunGrad)"/><g stroke="#ffc86c" stroke-width="4" opacity=".65"><path d="M140 72v-17M140 245v-17M62 150H44M236 150h-18M85 95l-13-13M208 208l-13-13M195 95l13-13M72 208l13-13"/></g>
+ <circle cx="450" cy="150" r="25" fill="url(#moonGrad)" stroke="#e7efff" stroke-width="2"/>
+ <circle cx="770" cy="150" r="70" fill="url(#earthGrad)" stroke="#8bd8ff" stroke-width="2"/><path d="M730 115q24-24 43 0t34 4q-8 28-29 29t-23 31q-22-14-25-37Z" fill="#7ad39d" opacity=".9"/><path d="M770 80v140" stroke="#d8f3ff" opacity=".25"/>
+ <path d="M475 144 L700 147 L700 153 L475 156Z" fill="#080d20" opacity=".78"/>
+ <g fill="#f5e6c4" font-size="20" font-weight="700" text-anchor="middle"><text x="140" y="265">MẶT TRỜI</text><text x="450" y="218">MẶT TRĂNG</text><text x="770" y="250">TRÁI ĐẤT</text></g>
+ <g fill="#b9c9e8" font-size="15"><text x="555" y="112">BÓNG MẶT TRĂNG</text><path d="M610 118l-45 27" stroke="#b9c9e8" stroke-width="1.5" fill="none"/></g>
+ </svg><div class="diagram-caption"><span>Ánh sáng bị Mặt Trăng che khuất</span><span class="caption-pill">Vùng bóng đổ lên Trái Đất</span></div>
+ </div><div class="types"><article class="card reveal"><div class="eyebrow">01 · TOÀN PHẦN</div><h3>Nhật thực toàn phần</h3><p>Mặt Trăng che khuất hoàn toàn đĩa Mặt Trời đối với người quan sát trong vùng bóng tối.</p></article><article class="card reveal"><div class="eyebrow">02 · MỘT PHẦN</div><h3>Nhật thực một phần</h3><p>Mặt Trăng chỉ che khuất một phần đĩa Mặt Trời, khiến Mặt Trời trông như bị khuyết.</p></article><article class="card reveal"><div class="eyebrow">03 · HÌNH KHUYÊN</div><h3>Nhật thực hình khuyên</h3><p>Mặt Trăng có kích thước biểu kiến nhỏ hơn Mặt Trời, để lộ một vòng sáng bao quanh.</p></article></div><div class="timeline"><div><b>01 · Bắt đầu</b><p>Mặt Trăng bắt đầu che khuất Mặt Trời; phần bị che tăng dần.</p></div><div><b>02 · Cực đại</b><p>Hiện tượng đạt mức che khuất lớn nhất.</p></div><div><b>03 · Kết thúc</b><p>Mặt Trăng di chuyển ra khỏi vùng che khuất.</p></div></div><div class="warning"><b>Lưu ý an toàn:</b> Không nhìn trực tiếp vào Mặt Trời khi quan sát nhật thực. Chỉ sử dụng thiết bị quan sát chuyên dụng, đúng tiêu chuẩn.</div></section>
+<section class="section" id="nguyetthuc"><div class="heading"><div class="eyebrow">03 / HIỆN TƯỢNG THIÊN VĂN</div><h2>Nguyệt <em>thực</em></h2><p>Nguyệt thực xảy ra khi Trái Đất nằm giữa Mặt Trời và Mặt Trăng, khiến Mặt Trăng đi vào vùng bóng của Trái Đất.</p></div><div class="diagram eclipse-diagram lunar-diagram">
+ <div class="diagram-heading"><b>MÔ HÌNH NGUYỆT THỰC</b><span>Trái Đất nằm giữa Mặt Trời và Mặt Trăng</span></div>
+ <svg viewBox="0 0 900 300" role="img" aria-labelledby="lunarTitle lunarDesc">
+ <title id="lunarTitle">Sơ đồ hiện tượng nguyệt thực</title><desc id="lunarDesc">Trái Đất nằm giữa Mặt Trời và Mặt Trăng. Bóng tối của Trái Đất kéo dài ra phía sau và che khuất Mặt Trăng.</desc>
+ <defs><radialGradient id="lSunGrad"><stop stop-color="#fff6bb"/><stop offset=".55" stop-color="#ffc34e"/><stop offset="1" stop-color="#ed762f"/></radialGradient><radialGradient id="lEarthGrad" cx="30%" cy="28%"><stop stop-color="#7be0dc"/><stop offset=".55" stop-color="#2789bd"/><stop offset="1" stop-color="#102b69"/></radialGradient><radialGradient id="lMoonGrad" cx="32%" cy="25%"><stop stop-color="#ffb18a"/><stop offset=".55" stop-color="#bd514f"/><stop offset="1" stop-color="#542c58"/></radialGradient></defs>
+ <path d="M145 90 L450 116 L820 136 L820 164 L450 184 L145 210Z" fill="#ffdc83" opacity=".09"/>
+ <path d="M485 137 L820 112 L820 188 L485 163Z" fill="#080d20" opacity=".88" stroke="#a99cff" stroke-dasharray="6 5"/>
+ <path d="M145 90 L450 137 M145 210 L450 163" stroke="#ffd77b" stroke-width="2" stroke-dasharray="7 7" opacity=".8"/>
+ <circle cx="145" cy="150" r="58" fill="url(#lSunGrad)"/><g stroke="#ffc86c" stroke-width="4" opacity=".65"><path d="M145 72v-17M145 245v-17M67 150H49M241 150h-18M90 95L77 82M213 208l-13-13M200 95l13-13M77 208l13-13"/></g>
+ <circle cx="450" cy="150" r="68" fill="url(#lEarthGrad)" stroke="#8bd8ff" stroke-width="2"/><path d="M411 115q24-24 43 0t34 4q-8 28-29 29t-23 31q-22-14-25-37Z" fill="#7ad39d" opacity=".9"/>
+ <circle cx="820" cy="150" r="28" fill="url(#lMoonGrad)" stroke="#ffb79a" stroke-width="2"/><path d="M801 133q18-13 31 5t-2 27q-18-1-29-32Z" fill="#6c3448" opacity=".55"/>
+ <g fill="#f5e6c4" font-size="20" font-weight="700" text-anchor="middle"><text x="145" y="265">MẶT TRỜI</text><text x="450" y="250">TRÁI ĐẤT</text><text x="820" y="218">MẶT TRĂNG</text></g>
+ <g fill="#b9c9e8" font-size="15"><text x="610" y="98">BÓNG TRÁI ĐẤT</text><path d="M670 104l-45 33" stroke="#b9c9e8" stroke-width="1.5" fill="none"/></g>
+ </svg><div class="diagram-caption"><span>Trái Đất chắn ánh sáng Mặt Trời</span><span class="caption-pill">Mặt Trăng đi vào vùng bóng</span></div>
+ </div><div class="note reveal"><h3>Vì sao Mặt Trăng có thể chuyển màu đỏ cam?</h3><p>Khi xảy ra nguyệt thực toàn phần, ánh sáng Mặt Trời đi qua khí quyển Trái Đất bị tán xạ; phần ánh sáng đỏ có thể tiếp tục chiếu tới Mặt Trăng, khiến Mặt Trăng có màu đỏ cam.</p></div><div class="compare"><div><div class="eyebrow">NHẬT THỰC</div><h3>Mặt Trăng ở giữa</h3><p>Mặt Trời → Mặt Trăng → Trái Đất</p></div><div><div class="eyebrow">NGUYỆT THỰC</div><h3>Trái Đất ở giữa</h3><p>Mặt Trời → Trái Đất → Mặt Trăng</p></div></div></section>
 <section class="section" id="thuytrieu"><div class="heading"><div class="eyebrow">04 / NỘI DUNG CHUYÊN ĐỀ</div><h2>Thủy <em>triều</em></h2><p>Phần tài liệu Word hiện có chưa cung cấp nội dung chi tiết về thủy triều.</p></div><div class="tide reveal"><div class="waves"></div><div><div class="eyebrow">CHỜ BỔ SUNG NỘI DUNG</div><h3>Không tự thêm kiến thức ngoài tài liệu</h3><p>Khu vực này được giữ sẵn để nhóm bổ sung phần thủy triều theo đúng tài liệu học tập và yêu cầu của giáo viên.</p></div></div></section>
 <section class="closing"><div class="eyebrow">CHUYÊN ĐỀ 06 · VẬT LÍ 10</div><h2>Cảm ơn cô và các bạn<br><em>đã lắng nghe!</em></h2><p>Nhóm chúng em xin cảm ơn.</p><a class="btn" href="#">Quay lại đầu trang ↑</a></section><footer><span>VẬT LÍ 10 · CHUYÊN ĐỀ 06</span><span>Nhật thực · Nguyệt thực · Thủy triều</span></footer>
 <script>const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(x=>io.observe(x));</script><script>
