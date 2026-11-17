@@ -339,7 +339,7 @@ body.presentation-mode .present-tools:hover{opacity:1}
 .earth-revolution-hero{animation:none!important}
 .earth-revolution-hero .hero-earth{animation:earthDay 16s linear infinite}
 .phenomenon-stage svg{overflow:visible}
-.phenomenon-stage .solar-shadow-cone{transition:d .12s ease}
+.phenomenon-stage .solar-shadow-cone{transition:d .12s ease}.lunar-moon-mover.in-shadow circle:first-child{filter:sepia(.75) saturate(1.7) hue-rotate(325deg) brightness(.82);transition:filter .2s}
 .hero-cinematic .hero-earth{background:radial-gradient(circle at 28% 25%,#d2fff2 0,#43a9ca 35%,#15518c 67%,#071a4c 100%);box-shadow:inset -18px -12px 24px #02071cbb,0 0 38px #55cfffaa}
 .hero-cinematic .hero-earth i{background:#65c98e;clip-path:polygon(4% 15%,27% 0,49% 14%,54% 31%,77% 34%,94% 58%,75% 73%,68% 100%,48% 80%,31% 75%,24% 51%,0 43%);filter:drop-shadow(0 0 2px #b5ffd2)}
 .hero-cinematic .hero-earth b{position:absolute;inset:0;border-radius:50%;background:linear-gradient(105deg,transparent 35%,#06163c66 72%,#02091b99);border:1px solid #a6eaff88}
@@ -437,7 +437,7 @@ body.presentation-mode .present-tools:hover{opacity:1}
  <div class="diagram-heading"><b>MÔ PHỎNG NGUYỆT THỰC</b><span>Mặt Trăng đi qua vùng bóng của Trái Đất</span></div>
  <div class="phenomenon-stage lunar-motion">
   <svg viewBox="0 0 900 300" role="img" aria-label="Nguyệt thực: Trái Đất nằm giữa Mặt Trời và Mặt Trăng; Mặt Trăng đi vào bóng Trái Đất và chuyển đỏ cam">
-   <defs><radialGradient id="lSun2"><stop stop-color="#fffbd0"/><stop offset=".55" stop-color="#ffd15e"/><stop offset="1" stop-color="#e96d32"/></radialGradient><radialGradient id="lEarth2"><stop stop-color="#a5f2e5"/><stop offset=".55" stop-color="#2589bd"/><stop offset="1" stop-color="#10265b"/></radialGradient><radialGradient id="lMoon2"><stop stop-color="#fff0d9"/><stop offset=".6" stop-color="#e58b66"/><stop offset="1" stop-color="#773a49"/></radialGradient></defs>
+   <defs><radialGradient id="lSun2"><stop stop-color="#fffbd0"/><stop offset=".55" stop-color="#ffd15e"/><stop offset="1" stop-color="#e96d32"/></radialGradient><radialGradient id="lEarth2"><stop stop-color="#a5f2e5"/><stop offset=".55" stop-color="#2589bd"/><stop offset="1" stop-color="#10265b"/></radialGradient><radialGradient id="lMoon2"><stop stop-color="#ffffff"/><stop offset=".6" stop-color="#c9d2df"/><stop offset="1" stop-color="#647187"/></radialGradient></defs>
    <path d="M200 105 L465 122 L835 133 L835 167 L465 178 L200 195Z" fill="#ffd36d" opacity=".10"/>
    <path d="M515 93 L835 128 L835 172 L515 207Z" fill="#030715" opacity=".96" stroke="#a99cff" stroke-dasharray="8 6" stroke-width="2"/>
    <circle cx="145" cy="150" r="54" fill="url(#lSun2)"/><circle cx="145" cy="150" r="66" fill="none" stroke="#ffdc85" stroke-width="2" opacity=".55"/>
@@ -563,7 +563,7 @@ document.querySelectorAll('.motion-controls').forEach(panel=>{
   const mover=stage.querySelector(kind==="solar"?".solar-moon-mover":".lunar-moon-mover");
   const slider=panel.querySelector("[data-position]"),speed=panel.querySelector("[data-speed]"),play=panel.querySelector("[data-play]"),reset=panel.querySelector("[data-reset]"),read=panel.querySelector(".control-readout");
   let x=initial,running=true,timer=null;
-  const draw=()=>{mover.setAttribute("transform","translate("+x+",0)");slider.value=String(x);read.textContent="Vị trí Mặt Trăng: "+x};
+  const draw=()=>{mover.setAttribute("transform","translate("+x+",0)");slider.value=String(x);read.textContent="Vị trí Mặt Trăng: "+x;if(kind==="lunar")mover.classList.toggle("in-shadow",x>=515&&x<=835)};
   const updateShadow=()=>{if(kind==="solar"){const path=stage.querySelector(".solar-shadow-cone");if(path){const left=x+25;path.setAttribute("d","M"+left+" 125 L755 145 L755 155 L"+left+" 175Z")}}};
   const stop=()=>{running=false;clearInterval(timer);play.textContent="▶ Tiếp tục"};
   const start=()=>{running=true;play.textContent="⏸ Tạm dừng";clearInterval(timer);timer=setInterval(()=>{x+=Number(speed.value)*1.1;if(x>max)x=min;draw();updateShadow()},35)};
@@ -574,7 +574,7 @@ document.querySelectorAll('.motion-controls').forEach(panel=>{
   draw();updateShadow();start();
  }
  wire("solar",".solar-motion",360,560,460);
- wire("lunar",".lunar-motion",520,850,800);
+ wire("lunar",".lunar-motion",500,880,850);
 })();
 </script>
 </body></html>
