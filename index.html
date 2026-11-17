@@ -240,6 +240,55 @@ body.presentation-mode .present-tools:hover{opacity:1}
  .hero-data{font-size:8px;bottom:2%;left:2%;right:2%}
 }
 @media(prefers-reduced-motion:reduce){.hero-starfield i,.nebula-a,.nebula-b,.moon-orbit,.hero-cinematic .hero-moon,.meteor,.solar-flare,.sun-corona{animation:none!important}}
+
+/* SLIDE-BASED PHYSICS MOTION — clear, labeled, observable */
+.motion-lesson{margin:30px 0 24px;padding:24px;border:1px solid #8ba9e866;border-radius:20px;background:linear-gradient(135deg,#111c3a,#20214a 60%,#101b34);box-shadow:0 18px 45px #02061177}
+.motion-title{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:#ffe0a0;font-size:13px;letter-spacing:1px}.motion-title span{color:#c6d7f2;letter-spacing:0}
+.earth-motion-stage{height:330px;position:relative;overflow:hidden;margin:15px 0 8px;border-radius:16px;background:radial-gradient(ellipse at 50% 50%,#253a68,#10172f 68%,#080d20)}
+.sun-core{position:absolute;left:50%;top:50%;width:78px;height:78px;margin:-39px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff8c8,#ffd15c 48%,#ef7735 80%);box-shadow:0 0 24px #ffd36c,0 0 70px #ff9c48aa;z-index:2}
+.sun-core span{position:absolute;top:88px;left:50%;transform:translateX(-50%);white-space:nowrap;color:#ffe3a7;font-size:11px;font-weight:800}
+.earth-orbit-path{position:absolute;left:50%;top:50%;width:290px;height:220px;transform:translate(-50%,-50%);border:1px dashed #9ccaff99;border-radius:50%}
+.earth-revolution{position:absolute;left:50%;top:50%;width:290px;height:220px;margin-left:-145px;margin-top:-110px;animation:earthYear 16s linear infinite;z-index:3}
+.earth-globe{position:absolute;left:50%;top:-20px;width:42px;height:42px;margin-left:-21px;border-radius:50%;overflow:hidden;background:linear-gradient(90deg,#123d83,#278ec2 48%,#0c2861);box-shadow:0 0 22px #69d8ff99;animation:earthDay 3s linear infinite}
+.earth-globe:before{content:"";position:absolute;inset:-10px;background:repeating-linear-gradient(90deg,transparent 0 8px,#75d89a 9px 14px,transparent 15px 23px);animation:earthSurface 2.5s linear infinite}
+.earth-globe i{position:absolute;inset:0;background:linear-gradient(90deg,#02091b99,transparent 55%);border-radius:50%}
+.earth-globe b{position:absolute;inset:-3px;border:1px solid #a7f0ff;border-radius:50%}
+.moon-mini-orbit{position:absolute;left:50%;top:-20px;width:72px;height:72px;margin-left:-36px;border:1px dashed #dce7ff99;border-radius:50%;animation:moonYear 3.2s linear infinite}
+.moon-mini{position:absolute;left:50%;top:-6px;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:radial-gradient(circle at 30% 25%,white,#aeb8ca 70%,#59647b);box-shadow:0 0 10px #fff}
+.motion-axis{position:absolute;left:calc(50% + 124px);top:calc(50% - 128px);height:58px;border-left:2px solid #f4d18b;transform:rotate(23deg)}
+.motion-caption{position:absolute;bottom:12px;left:12px;right:12px;display:flex;justify-content:center;gap:18px;flex-wrap:wrap;color:#d8e6ff;font-size:11px;text-align:center}
+@keyframes earthYear{to{transform:rotate(360deg)}}@keyframes moonYear{to{transform:rotate(360deg)}}@keyframes earthDay{to{filter:hue-rotate(360deg)}}@keyframes earthSurface{to{background-position:46px 0}}
+.motion-controls{display:flex;gap:10px;flex-wrap:wrap}.motion-controls button{border:1px solid #91b4e8;border-radius:999px;background:#26365f;color:white;padding:8px 15px;font:inherit;cursor:pointer}.motion-explain{color:#d1def3;margin-bottom:0}.motion-explain b{color:#ffe0a0}
+.phenomenon-stage{height:270px;position:relative;overflow:hidden;margin:12px 0 14px;border:1px solid #9bb5e855;border-radius:16px;background:radial-gradient(ellipse at 50% 50%,#24375f,#0a1228 75%);isolation:isolate}
+.phenomenon-stage .stage-sun{position:absolute;left:9%;top:50%;width:66px;height:66px;margin-top:-33px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff9c9,#ffd05b 50%,#e87532);box-shadow:0 0 25px #ffcb68,0 0 65px #ed863d88;z-index:2}
+.phenomenon-stage .stage-sun:after{content:"";position:absolute;inset:-10px;border:1px solid #ffd98b88;border-radius:50%}
+.phenomenon-stage .stage-earth{position:absolute;left:82%;top:50%;width:76px;height:76px;margin:-38px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#9be8df,#2788bd 52%,#101d55);box-shadow:inset -16px -8px 18px #02091b99,0 0 24px #58cfff99;z-index:3}
+.phenomenon-stage .stage-earth:before{content:"";position:absolute;inset:10px 15px 13px 9px;border-radius:40% 60% 55% 45%;background:#72ce98;transform:rotate(-24deg)}
+.phenomenon-stage .stage-earth b,.phenomenon-stage .stage-sun b,.phenomenon-stage .moving-moon b{position:absolute;top:85px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:10px;letter-spacing:1px;color:#e3edff;font-weight:800}
+.phenomenon-stage .moving-moon{position:absolute;left:43%;top:50%;width:30px;height:30px;margin:-15px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff,#b4bfd0 70%,#58637a);box-shadow:0 0 15px #dce8ff;z-index:5}
+.phenomenon-stage .moving-moon i{position:absolute;inset:0;border-radius:50%;background:linear-gradient(90deg,#1b2845aa,transparent 65%)}
+.phenomenon-stage .moving-moon b{top:40px;font-size:9px}
+.light-beams{position:absolute;left:15%;right:16%;top:calc(50% - 2px);height:4px;background:linear-gradient(90deg,#ffd66eaa,#fff2be55,transparent);box-shadow:0 0 12px #ffdc83;z-index:1}
+.stage-path{position:absolute;left:37%;top:50%;width:34%;border-top:1px dashed #cbdcff88}
+.solar-shadow{position:absolute;left:47%;top:calc(50% - 7px);width:35%;height:14px;background:linear-gradient(90deg,#090d20,#090d20aa,transparent);clip-path:polygon(0 40%,100% 0,100% 100%,0 60%);z-index:2}
+.solar-motion .moving-moon{animation:solarPass 5s ease-in-out infinite}
+@keyframes solarPass{0%,100%{left:43%}50%{left:63%}}
+.solar-motion .stage-status,.lunar-motion .stage-status{position:absolute;bottom:13px;left:10px;right:10px;text-align:center;color:#ffe1a0;font-size:10px;letter-spacing:1px;font-weight:800}
+.lunar-motion .stage-sun{left:9%}.lunar-motion .stage-earth{left:47%}.lunar-motion .moving-moon{left:83%;animation:lunarPass 6s ease-in-out infinite}
+.earth-shadow{position:absolute;left:49%;top:calc(50% - 29px);width:44%;height:58px;background:linear-gradient(90deg,#050817,#050817dd,transparent);clip-path:polygon(0 35%,100% 0,100% 100%,0 65%);z-index:2}
+.lunar-path{position:absolute;left:53%;top:50%;width:35%;border-top:1px dashed #cbdcff88}
+.lunar-motion .moving-moon{z-index:4}
+.lunar-motion .moving-moon:after{content:"";position:absolute;inset:-3px;border-radius:50%;box-shadow:0 0 18px #ff8a69;opacity:0;animation:redMoon 6s ease-in-out infinite}
+@keyframes lunarPass{0%,100%{left:83%}50%{left:58%}}@keyframes redMoon{0%,35%,100%{opacity:0}60%,78%{opacity:1;background:#e66b4d55}}
+.phenomenon-stage .stage-earth b{top:86px}
+.eclipse-diagram>svg{display:none!important}
+.eclipse-diagram .diagram-caption{margin-top:4px}
+.phenomenon-stage:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(110deg,transparent 35%,#ffffff08 50%,transparent 65%);animation:stageShimmer 5s linear infinite}
+@keyframes stageShimmer{to{transform:translateX(100%)}}
+.is-paused *{animation-play-state:paused!important}
+@media(max-width:760px){.earth-motion-stage{height:280px}.earth-orbit-path,.earth-revolution{width:220px;height:170px}.earth-revolution{margin-left:-110px;margin-top:-85px}.earth-globe{top:-18px;width:36px;height:36px;margin-left:-18px}.moon-mini-orbit{width:60px;height:60px;top:-12px;margin-left:-30px}.motion-axis{display:none}.motion-caption{font-size:9px;gap:7px}.phenomenon-stage{height:230px}.phenomenon-stage .stage-sun{width:48px;height:48px;margin-top:-24px}.phenomenon-stage .stage-earth{width:58px;height:58px;margin:-29px}.phenomenon-stage .moving-moon{width:24px;height:24px;margin:-12px}.phenomenon-stage .stage-earth b,.phenomenon-stage .stage-sun b{font-size:8px}.phenomenon-stage .moving-moon b{font-size:8px;top:34px}.phenomenon-stage .stage-status{font-size:8px}}
+@media(prefers-reduced-motion:reduce){.earth-revolution,.earth-globe:before,.moon-mini-orbit,.solar-motion .moving-moon,.lunar-motion .moving-moon,.phenomenon-stage:after{animation:none!important}}
+
 </style></head><body>
 <div class="progress-track" aria-hidden="true"><span id="readingProgress"></span></div>
 <header class="nav"><b>VẬT LÍ 10 <span>· CHUYÊN ĐỀ 06</span></b><nav><a href="#hanhtinh">Thiên thể</a><a href="#nhatthuc">Nhật thực</a><a href="#nguyetthuc">Nguyệt thực</a><a href="#thuytrieu">Thủy triều</a></nav></header>
@@ -265,9 +314,24 @@ body.presentation-mode .present-tools:hover{opacity:1}
  </div>
  <div class="hero-bottom"><span>01 — HỆ MẶT TRỜI</span><span>CUỘN XUỐNG ĐỂ KHÁM PHÁ ↓</span></div>
  </section>
-<section class="section" id="hanhtinh"><div class="heading"><div class="eyebrow">01 / NỀN TẢNG KIẾN THỨC</div><h2>Trái Đất <em>và</em> Mặt Trăng</h2><p>Một số đặc điểm cơ bản giúp chúng ta hiểu rõ hơn về nhật thực và nguyệt thực.</p></div><div class="grid"><article class="card reveal"><div class="planet"></div><div class="eyebrow">HÀNH TINH</div><h3>Trái Đất</h3><p>Trái Đất có hình dạng gần như một khối cầu, hơi dẹt ở hai cực Bắc và Nam.</p><div class="stats"><div><strong>6.371 km</strong><small>Bán kính trung bình</small></div><div><strong>40.075 km</strong><small>Chu vi xích đạo</small></div><div><strong>510 triệu km²</strong><small>Diện tích bề mặt</small></div><div><strong>5,97 × 10²⁴ kg</strong><small>Khối lượng</small></div></div></article><article class="card reveal"><div class="planet moon"></div><div class="eyebrow">VỆ TINH TỰ NHIÊN</div><h3>Mặt Trăng</h3><p>Là vệ tinh tự nhiên duy nhất của Trái Đất, có kích thước nhỏ hơn Trái Đất khoảng 4 lần.</p><div class="stats"><div><strong>384.000 km</strong><small>Khoảng cách trung bình đến Trái Đất</small></div></div></article></div><div class="note reveal"><b>Chuyển động và quỹ đạo:</b><p>Trái Đất tự quay quanh trục với chu kì khoảng 24 giờ và quay quanh Mặt Trời với chu kì khoảng 365,25 ngày. Mặt phẳng quỹ đạo của Mặt Trăng nghiêng khoảng 5° so với mặt phẳng quỹ đạo Trái Đất quanh Mặt Trời. Vì vậy, không phải tháng nào cũng có nhật thực hoặc nguyệt thực.</p></div></section>
+<section class="section" id="hanhtinh"><div class="heading"><div class="eyebrow">01 / NỀN TẢNG KIẾN THỨC</div><h2>Trái Đất <em>và</em> Mặt Trăng</h2><p>Một số đặc điểm cơ bản giúp chúng ta hiểu rõ hơn về nhật thực và nguyệt thực.</p></div><div class="grid"><article class="card reveal"><div class="planet"></div><div class="eyebrow">HÀNH TINH</div><h3>Trái Đất</h3><p>Trái Đất có hình dạng gần như một khối cầu, hơi dẹt ở hai cực Bắc và Nam.</p><div class="stats"><div><strong>6.371 km</strong><small>Bán kính trung bình</small></div><div><strong>40.075 km</strong><small>Chu vi xích đạo</small></div><div><strong>510 triệu km²</strong><small>Diện tích bề mặt</small></div><div><strong>5,97 × 10²⁴ kg</strong><small>Khối lượng</small></div></div></article><article class="card reveal"><div class="planet moon"></div><div class="eyebrow">VỆ TINH TỰ NHIÊN</div><h3>Mặt Trăng</h3><p>Là vệ tinh tự nhiên duy nhất của Trái Đất, có kích thước nhỏ hơn Trái Đất khoảng 4 lần.</p><div class="stats"><div><strong>384.000 km</strong><small>Khoảng cách trung bình đến Trái Đất</small></div></div></article></div><div class="motion-lesson reveal" aria-label="Mô phỏng Trái Đất tự quay và quay quanh Mặt Trời">
+ <div class="motion-title"><b>QUAN SÁT CHUYỂN ĐỘNG THỰC TẾ</b><span>Hai chuyển động khác nhau của Trái Đất</span></div>
+ <div class="earth-motion-stage">
+  <div class="sun-core"><span>MẶT TRỜI</span></div><div class="earth-orbit-path"></div>
+  <div class="earth-revolution"><div class="earth-globe"><i></i><b></b></div><div class="moon-mini-orbit"><i class="moon-mini"></i></div></div>
+  <div class="motion-axis"></div>
+  <div class="motion-caption"><span>↻ Trái Đất quay quanh trục</span><span>⟲ Trái Đất quay quanh Mặt Trời</span><span>· Mặt Trăng quay quanh Trái Đất</span></div>
+ </div>
+ <div class="motion-controls"><button type="button" data-motion-toggle>⏸ Tạm dừng</button><button type="button" data-motion-restart>↻ Chạy lại</button></div>
+ <p class="motion-explain"><b>Phân biệt:</b> Tự quay quanh trục tạo ra ngày và đêm; chuyển động quanh Mặt Trời tạo nên một năm (khoảng 365,25 ngày). Mặt Trăng là vệ tinh quay quanh Trái Đất.</p>
+</div><div class="note reveal"><b>Chuyển động và quỹ đạo:</b><p>Trái Đất tự quay quanh trục với chu kì khoảng 24 giờ và quay quanh Mặt Trời với chu kì khoảng 365,25 ngày. Mặt phẳng quỹ đạo của Mặt Trăng nghiêng khoảng 5° so với mặt phẳng quỹ đạo Trái Đất quanh Mặt Trời. Vì vậy, không phải tháng nào cũng có nhật thực hoặc nguyệt thực.</p></div></section>
 <section class="section dark" id="nhatthuc"><div class="heading"><div class="eyebrow">02 / HIỆN TƯỢNG THIÊN VĂN</div><h2>Nhật <em>thực</em></h2><p>Nhật thực xảy ra khi Mặt Trăng đi vào vị trí giữa Mặt Trời và Trái Đất, che khuất ánh sáng Mặt Trời và tạo bóng lên bề mặt Trái Đất.</p></div><div class="diagram eclipse-diagram solar-diagram">
- <div class="diagram-heading"><b>MÔ HÌNH NHẬT THỰC</b><span>Mặt Trăng nằm giữa Mặt Trời và Trái Đất</span></div>
+ <div class="diagram-heading"><b>MÔ PHỎNG NHẬT THỰC</b><span>Mặt Trăng di chuyển vào giữa Mặt Trời và Trái Đất</span></div>
+ <div class="phenomenon-stage solar-motion" role="img" aria-label="Mặt Trăng chuyển động vào giữa Mặt Trời và Trái Đất, bóng Mặt Trăng quét lên Trái Đất">
+  <div class="light-beams"></div><div class="stage-sun"><i></i><b>MẶT TRỜI</b></div><div class="stage-earth"><i></i><b>TRÁI ĐẤT</b></div>
+  <div class="solar-shadow"></div><div class="moving-moon"><i></i><b>MẶT TRĂNG</b></div>
+  <div class="stage-path"></div><div class="stage-status">MẶT TRĂNG ĐANG ĐI VÀO GIỮA · BÓNG ĐỔ LÊN TRÁI ĐẤT</div>
+ </div>
  <svg viewBox="0 0 900 300" role="img" aria-labelledby="solarTitle solarDesc">
  <title id="solarTitle">Sơ đồ hiện tượng nhật thực</title><desc id="solarDesc">Mặt Trời ở bên trái, Mặt Trăng nằm giữa và che ánh sáng, bóng tối của Mặt Trăng chiếu lên Trái Đất ở bên phải.</desc>
  <defs><radialGradient id="sunGrad"><stop stop-color="#fff6bb"/><stop offset=".55" stop-color="#ffc34e"/><stop offset="1" stop-color="#ed762f"/></radialGradient><radialGradient id="earthGrad" cx="30%" cy="28%"><stop stop-color="#7be0dc"/><stop offset=".55" stop-color="#2789bd"/><stop offset="1" stop-color="#102b69"/></radialGradient><radialGradient id="moonGrad" cx="32%" cy="25%"><stop stop-color="#f8fbff"/><stop offset=".7" stop-color="#aeb9ca"/><stop offset="1" stop-color="#59657c"/></radialGradient></defs>
@@ -283,7 +347,13 @@ body.presentation-mode .present-tools:hover{opacity:1}
  </svg><div class="diagram-caption"><span>Ánh sáng bị Mặt Trăng che khuất</span><span class="caption-pill">Vùng bóng đổ lên Trái Đất</span></div>
  </div><div class="types"><article class="card reveal"><div class="eyebrow">01 · TOÀN PHẦN</div><h3>Nhật thực toàn phần</h3><p>Mặt Trăng che khuất hoàn toàn đĩa Mặt Trời đối với người quan sát trong vùng bóng tối.</p></article><article class="card reveal"><div class="eyebrow">02 · MỘT PHẦN</div><h3>Nhật thực một phần</h3><p>Mặt Trăng chỉ che khuất một phần đĩa Mặt Trời, khiến Mặt Trời trông như bị khuyết.</p></article><article class="card reveal"><div class="eyebrow">03 · HÌNH KHUYÊN</div><h3>Nhật thực hình khuyên</h3><p>Mặt Trăng có kích thước biểu kiến nhỏ hơn Mặt Trời, để lộ một vòng sáng bao quanh.</p></article></div><div class="timeline"><div><b>01 · Bắt đầu</b><p>Mặt Trăng bắt đầu che khuất Mặt Trời; phần bị che tăng dần.</p></div><div><b>02 · Cực đại</b><p>Hiện tượng đạt mức che khuất lớn nhất.</p></div><div><b>03 · Kết thúc</b><p>Mặt Trăng di chuyển ra khỏi vùng che khuất.</p></div></div><div class="warning"><b>Lưu ý an toàn:</b> Không nhìn trực tiếp vào Mặt Trời khi quan sát nhật thực. Chỉ sử dụng thiết bị quan sát chuyên dụng, đúng tiêu chuẩn.</div></section>
 <section class="section" id="nguyetthuc"><div class="heading"><div class="eyebrow">03 / HIỆN TƯỢNG THIÊN VĂN</div><h2>Nguyệt <em>thực</em></h2><p>Nguyệt thực xảy ra khi Trái Đất nằm giữa Mặt Trời và Mặt Trăng, khiến Mặt Trăng đi vào vùng bóng của Trái Đất.</p></div><div class="diagram eclipse-diagram lunar-diagram">
- <div class="diagram-heading"><b>MÔ HÌNH NGUYỆT THỰC</b><span>Trái Đất nằm giữa Mặt Trời và Mặt Trăng</span></div>
+ <div class="diagram-heading"><b>MÔ PHỎNG NGUYỆT THỰC</b><span>Mặt Trăng đi qua vùng bóng của Trái Đất</span></div>
+ <div class="phenomenon-stage lunar-motion" role="img" aria-label="Trái Đất nằm giữa Mặt Trời và Mặt Trăng; Mặt Trăng đi vào vùng bóng và chuyển đỏ cam">
+  <div class="light-beams"></div><div class="stage-sun"><i></i><b>MẶT TRỜI</b></div><div class="earth-shadow"></div>
+  <div class="stage-earth"><i></i><b>TRÁI ĐẤT</b></div><div class="lunar-path"></div>
+  <div class="moving-moon"><i></i><b>MẶT TRĂNG</b></div>
+  <div class="stage-status">MẶT TRĂNG ĐI VÀO BÓNG TRÁI ĐẤT · CÓ THỂ CHUYỂN ĐỎ CAM</div>
+ </div>
  <svg viewBox="0 0 900 300" role="img" aria-labelledby="lunarTitle lunarDesc">
  <title id="lunarTitle">Sơ đồ hiện tượng nguyệt thực</title><desc id="lunarDesc">Trái Đất nằm giữa Mặt Trời và Mặt Trăng. Bóng tối của Trái Đất kéo dài ra phía sau và che khuất Mặt Trăng.</desc>
  <defs><radialGradient id="lSunGrad"><stop stop-color="#fff6bb"/><stop offset=".55" stop-color="#ffc34e"/><stop offset="1" stop-color="#ed762f"/></radialGradient><radialGradient id="lEarthGrad" cx="30%" cy="28%"><stop stop-color="#7be0dc"/><stop offset=".55" stop-color="#2789bd"/><stop offset="1" stop-color="#102b69"/></radialGradient><radialGradient id="lMoonGrad" cx="32%" cy="25%"><stop stop-color="#ffb18a"/><stop offset=".55" stop-color="#bd514f"/><stop offset="1" stop-color="#542c58"/></radialGradient></defs>
@@ -346,4 +416,25 @@ if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
  });
 })();
 </script>
+
+<script>
+/* Accessible pause/restart controls for the educational motion models */
+document.querySelectorAll('.motion-controls').forEach(panel=>{
+ const stage=panel.previousElementSibling;
+ const pause=panel.querySelector('[data-motion-toggle]');
+ const restart=panel.querySelector('[data-motion-restart]');
+ pause.addEventListener('click',()=>{
+  const paused=stage.classList.toggle('is-paused');
+  pause.textContent=paused?'▶ Tiếp tục':'⏸ Tạm dừng';
+ });
+ restart.addEventListener('click',()=>{
+  stage.classList.remove('is-paused');
+  stage.querySelectorAll('*').forEach(el=>{
+   el.style.animation='none';void el.offsetWidth;el.style.animation='';
+  });
+  pause.textContent='⏸ Tạm dừng';
+ });
+});
+</script>
+
 </body></html>
