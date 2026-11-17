@@ -363,6 +363,21 @@ body.presentation-mode .present-tools:hover{opacity:1}
 .phenomenon-stage{isolation:isolate}
 @media(max-width:760px){.hero-cinematic .hero-earth{width:60px!important;height:60px!important;left:-30px!important;top:-30px!important}.solar-system-stage:after{font-size:6px;letter-spacing:.3px;max-width:95%;white-space:normal;text-align:center}}
 
+
+/* FINAL FIX: both eclipse models use a real Moon orbit around Earth */
+.eclipse-diagram .phenomenon-stage{height:340px!important;overflow:hidden!important}
+.eclipse-diagram .phenomenon-stage svg{height:100%!important;width:100%!important;max-height:none!important;display:block!important}
+.eclipse-diagram .phenomenon-stage .solar-moon-mover,
+.eclipse-diagram .phenomenon-stage .lunar-moon-mover{animation:none!important;transform-box:view-box;will-change:transform}
+.eclipse-diagram .phenomenon-stage .solar-shadow-cone{transition:opacity .18s ease,d .18s ease}
+.eclipse-diagram .phenomenon-stage .lunar-moon-mover circle:first-child{transition:filter .2s ease,fill .2s ease}
+.eclipse-diagram .phenomenon-stage .lunar-moon-mover.in-shadow circle:first-child{filter:sepia(.9) saturate(2.4) hue-rotate(325deg) brightness(.9)}
+.eclipse-diagram .orbit-control-panel{margin:16px 0 8px}
+.eclipse-diagram .range-label input{min-height:24px}
+.eclipse-diagram .control-readout{font-variant-numeric:tabular-nums}
+.eclipse-diagram .stage-status{position:relative;z-index:2;margin-top:4px;text-align:center;color:#ffe2a4;font-size:11px;font-weight:800;letter-spacing:.5px}
+@media(max-width:760px){.eclipse-diagram .phenomenon-stage{height:265px!important}.eclipse-diagram .range-label{grid-template-columns:1fr;gap:5px}}
+
 </style></head><body>
 <div class="progress-track" aria-hidden="true"><span id="readingProgress"></span></div>
 <header class="nav"><b>VẬT LÍ 10 <span>· CHUYÊN ĐỀ 06</span></b><nav><a href="#hanhtinh">Thiên thể</a><a href="#nhatthuc">Nhật thực</a><a href="#nguyetthuc">Nguyệt thực</a><a href="#thuytrieu">Thủy triều</a></nav></header>
@@ -427,6 +442,7 @@ body.presentation-mode .present-tools:hover{opacity:1}
  <div class="phenomenon-stage solar-motion">
   <svg viewBox="0 0 900 300" role="img" aria-label="Nhật thực: Mặt Trăng đi vào giữa Mặt Trời và Trái Đất, bóng Mặt Trăng chạm bề mặt Trái Đất">
    <defs><radialGradient id="sSun"><stop stop-color="#fffbd0"/><stop offset=".55" stop-color="#ffd15e"/><stop offset="1" stop-color="#e96d32"/></radialGradient><radialGradient id="sEarth"><stop stop-color="#a5f2e5"/><stop offset=".55" stop-color="#2589bd"/><stop offset="1" stop-color="#10265b"/></radialGradient><clipPath id="solarEarthClip"><circle cx="760" cy="150" r="65"/></clipPath><radialGradient id="sMoon"><stop stop-color="#fff"/><stop offset=".72" stop-color="#c0cada"/><stop offset="1" stop-color="#66718a"/></radialGradient></defs>
+   <circle cx="760" cy="150" r="145" fill="none" stroke="#a9c8ff" stroke-opacity=".48" stroke-width="2" stroke-dasharray="7 8"/>
    <path d="M175 125 L760 85 L760 215 L175 175Z" fill="#ffd36d" opacity=".10"/>
    <path class="solar-shadow-cone" d="M445 142 L755 145 L755 155 L445 158Z" fill="#050817" opacity=".95"/>
    <circle cx="145" cy="150" r="54" fill="url(#sSun)"/><circle cx="145" cy="150" r="66" fill="none" stroke="#ffdc85" stroke-width="2" opacity=".55"/>
@@ -439,7 +455,7 @@ body.presentation-mode .present-tools:hover{opacity:1}
    </g>
    <circle cx="760" cy="150" r="65" fill="none" stroke="#e7fbff" stroke-opacity=".28" stroke-width="2"/>
    <path d="M760 86a64 64 0 0 1 0 128" fill="none" stroke="#02091b" stroke-opacity=".45" stroke-width="15"/>
-   <g class="solar-moon-mover"><circle cx="0" cy="150" r="25" fill="url(#sMoon)" stroke="#f2f5ff" stroke-width="2"/><circle cx="-7" cy="142" r="5" fill="#8d99ae" opacity=".5"/><circle cx="8" cy="158" r="4" fill="#8d99ae" opacity=".45"/></g>
+   <g class="solar-moon-mover" id="solarMoonMover" transform="translate(615 150)"><circle cx="0" cy="0" r="25" fill="url(#sMoon)" stroke="#f2f5ff" stroke-width="2"/><circle cx="-7" cy="-8" r="5" fill="#8d99ae" opacity=".5"/><circle cx="8" cy="8" r="4" fill="#8d99ae" opacity=".45"/></g>
    <g fill="#f5e6c4" font-size="19" font-weight="800" text-anchor="middle"><text x="145" y="255">MẶT TRỜI</text><text x="760" y="255">TRÁI ĐẤT</text></g>
    <text x="450" y="75" fill="#dbe7ff" font-size="16" text-anchor="middle">MẶT TRĂNG DI CHUYỂN QUA ĐƯỜNG ÁNH SÁNG</text>
    <text x="610" y="120" fill="#ffdca0" font-size="14" text-anchor="middle">BÓNG MẶT TRĂNG</text>
@@ -447,8 +463,8 @@ body.presentation-mode .present-tools:hover{opacity:1}
   <div class="stage-status">THỨ TỰ: MẶT TRỜI → MẶT TRĂNG → TRÁI ĐẤT</div>
  </div>
  <div class="orbit-control-panel" data-control="solar">
-  <div class="orbit-control-top"><b>ĐIỀU KHIỂN MẶT TRĂNG · NHẬT THỰC</b><span class="control-readout" aria-live="polite">Vị trí: 460</span></div>
-  <label class="range-label">Điều chỉnh vị trí <input data-position type="range" min="360" max="560" value="460" step="1"></label>
+  <div class="orbit-control-top"><b>ĐIỀU KHIỂN MẶT TRĂNG · NHẬT THỰC</b><span class="control-readout" aria-live="polite">Góc quỹ đạo: 180°</span></div>
+  <label class="range-label">Điều chỉnh vị trí <input data-position type="range" min="0" max="360" value="180" step="1" aria-label="Góc quay của Mặt Trăng quanh Trái Đất"></label>
   <label class="range-label">Tốc độ chuyển động <input data-speed type="range" min="1" max="10" value="5"></label>
   <div class="control-actions"><button type="button" data-play>⏸ Tạm dừng</button><button type="button" data-reset>↺ Đặt lại</button></div>
  </div>
@@ -472,7 +488,7 @@ body.presentation-mode .present-tools:hover{opacity:1}
   <svg viewBox="0 0 900 300" role="img" aria-label="Nguyệt thực: Trái Đất nằm giữa Mặt Trời và Mặt Trăng; Mặt Trăng đi vào bóng Trái Đất và chuyển đỏ cam">
    <defs><radialGradient id="lSun2"><stop stop-color="#fffbd0"/><stop offset=".55" stop-color="#ffd15e"/><stop offset="1" stop-color="#e96d32"/></radialGradient><radialGradient id="lEarth2"><stop stop-color="#a5f2e5"/><stop offset=".55" stop-color="#2589bd"/><stop offset="1" stop-color="#10265b"/></radialGradient><clipPath id="lunarEarthClip"><circle cx="465" cy="150" r="67"/></clipPath><radialGradient id="lMoon2"><stop stop-color="#ffffff"/><stop offset=".6" stop-color="#c9d2df"/><stop offset="1" stop-color="#647187"/></radialGradient></defs>
    <path d="M200 105 L465 122 L835 133 L835 167 L465 178 L200 195Z" fill="#ffd36d" opacity=".10"/>
-   <path d="M515 93 L835 128 L835 172 L515 207Z" fill="#030715" opacity=".96" stroke="#a99cff" stroke-dasharray="8 6" stroke-width="2"/>
+   <path d="M532 119 L835 128 L835 172 L532 181Z" fill="#030715" opacity=".96" stroke="#a99cff" stroke-dasharray="8 6" stroke-width="2"/>
    <circle cx="145" cy="150" r="54" fill="url(#lSun2)"/><circle cx="145" cy="150" r="66" fill="none" stroke="#ffdc85" stroke-width="2" opacity=".55"/>
    <g stroke="#ffd47a" stroke-width="4"><path d="M145 65v-15M145 235v-15M60 150H45M245 150h-15M85 90L73 78M217 222l-12-12M205 90l12-12M73 222l12-12"/></g>
    <circle cx="465" cy="150" r="67" fill="url(#lEarth2)" stroke="#b8f4ff" stroke-width="3"/>
@@ -483,7 +499,8 @@ body.presentation-mode .present-tools:hover{opacity:1}
    </g>
    <circle cx="465" cy="150" r="67" fill="none" stroke="#e7fbff" stroke-opacity=".28" stroke-width="2"/>
    <path d="M465 83a66 66 0 0 1 0 134" fill="none" stroke="#02091b" stroke-opacity=".45" stroke-width="16"/>
-   <g class="lunar-moon-mover"><circle cx="0" cy="150" r="28" fill="url(#lMoon2)" stroke="#ffd0ae" stroke-width="2"/><circle cx="-8" cy="142" r="6" fill="#9d5960" opacity=".5"/><circle cx="8" cy="160" r="4" fill="#9d5960" opacity=".5"/></g>
+   <circle cx="465" cy="150" r="145" fill="none" stroke="#a9c8ff" stroke-opacity=".48" stroke-width="2" stroke-dasharray="7 8"/>
+   <g class="lunar-moon-mover" id="lunarMoonMover" transform="translate(610 150)"><circle cx="0" cy="0" r="28" fill="url(#lMoon2)" stroke="#ffd0ae" stroke-width="2"/><circle cx="-8" cy="-8" r="6" fill="#9d5960" opacity=".5"/><circle cx="8" cy="10" r="4" fill="#9d5960" opacity=".5"/></g>
    <g fill="#f5e6c4" font-size="19" font-weight="800" text-anchor="middle"><text x="145" y="255">MẶT TRỜI</text><text x="465" y="255">TRÁI ĐẤT</text></g>
    <text x="650" y="75" fill="#dbe7ff" font-size="16" text-anchor="middle">MẶT TRĂNG ĐI QUA VÙNG BÓNG</text>
    <text x="690" y="112" fill="#ffdca0" font-size="14" text-anchor="middle">BÓNG TRÁI ĐẤT</text>
@@ -491,8 +508,8 @@ body.presentation-mode .present-tools:hover{opacity:1}
   <div class="stage-status">THỨ TỰ: MẶT TRỜI → TRÁI ĐẤT → MẶT TRĂNG</div>
  </div>
  <div class="orbit-control-panel" data-control="lunar">
-  <div class="orbit-control-top"><b>ĐIỀU KHIỂN MẶT TRĂNG · NGUYỆT THỰC</b><span class="control-readout" aria-live="polite">Vị trí: 850</span></div>
-  <label class="range-label">Điều chỉnh vị trí <input data-position type="range" min="500" max="880" value="850" step="1"></label>
+  <div class="orbit-control-top"><b>ĐIỀU KHIỂN MẶT TRĂNG · NGUYỆT THỰC</b><span class="control-readout" aria-live="polite">Góc quỹ đạo: 0°</span></div>
+  <label class="range-label">Điều chỉnh vị trí <input data-position type="range" min="0" max="360" value="0" step="1" aria-label="Góc quay của Mặt Trăng quanh Trái Đất"></label>
   <label class="range-label">Tốc độ chuyển động <input data-speed type="range" min="1" max="10" value="5"></label>
   <div class="control-actions"><button type="button" data-play>⏸ Tạm dừng</button><button type="button" data-reset>↺ Đặt lại</button></div>
  </div>
@@ -579,5 +596,68 @@ document.querySelectorAll('.motion-controls').forEach(panel=>{
 });
 </script>
 
+
+
+<script>
+/* Interactive orbital motion: Moon revolves around Earth in both eclipse models. */
+(()=>{
+ const models=[
+  {key:"solar",earthX:760,earthY:150,radius:145,start:180,moonRadius:25},
+  {key:"lunar",earthX:465,earthY:150,radius:145,start:0,moonRadius:28}
+ ];
+ const active=[];
+ for(const model of models){
+  const panel=document.querySelector('[data-control="'+model.key+'"]');
+  if(!panel) continue;
+  const stage=panel.previousElementSibling;
+  const mover=stage&&stage.querySelector("."+model.key+"-moon-mover");
+  const slider=panel.querySelector("[data-position]");
+  const speed=panel.querySelector("[data-speed]");
+  const readout=panel.querySelector(".control-readout");
+  const play=panel.querySelector("[data-play]");
+  const reset=panel.querySelector("[data-reset]");
+  const status=stage&&stage.querySelector(".stage-status");
+  const shadow=model.key==="solar"?stage.querySelector(".solar-shadow-cone"):null;
+  if(!mover||!slider||!speed||!play||!reset) continue;
+  let angle=model.start,running=true,last=0;
+  const update=()=>{
+   const rad=angle*Math.PI/180;
+   const x=model.earthX+Math.cos(rad)*model.radius;
+   const y=model.earthY+Math.sin(rad)*model.radius;
+   mover.setAttribute("transform","translate("+x.toFixed(2)+" "+y.toFixed(2)+")");
+   slider.value=String(Math.round(angle)%360);
+   const aligned=model.key==="solar"
+    ? x<model.earthX-65&&Math.abs(y-model.earthY)<25
+    : x>model.earthX+67&&Math.abs(y-model.earthY)<34;
+   if(model.key==="solar"){
+    const startX=x+model.moonRadius,endX=model.earthX-65,half=8;
+    shadow.setAttribute("d","M"+startX+" "+(y-half)+" L"+endX+" "+(model.earthY-5)+" L"+endX+" "+(model.earthY+5)+" L"+startX+" "+(y+half)+" Z");
+    shadow.style.opacity=aligned?".94":".10";
+    if(status)status.textContent=aligned
+     ?"ĐANG THẲNG HÀNG: MẶT TRỜI → MẶT TRĂNG → TRÁI ĐẤT"
+     :"MẶT TRĂNG ĐANG QUAY QUANH TRÁI ĐẤT · KÉO THANH TRƯỢT ĐỂ CĂN THẲNG HÀNG";
+   }else{
+    mover.classList.toggle("in-shadow",aligned);
+    if(status)status.textContent=aligned
+     ?"MẶT TRĂNG ĐANG ĐI QUA VÙNG BÓNG CỦA TRÁI ĐẤT"
+     :"MẶT TRĂNG ĐANG QUAY QUANH TRÁI ĐẤT · VÙNG BÓNG NẰM PHÍA SAU TRÁI ĐẤT";
+   }
+   if(readout)readout.textContent="Góc quỹ đạo: "+Math.round(angle)+"°"+(running?" · Đang chạy":" · Đã tạm dừng");
+  };
+  slider.addEventListener("input",()=>{angle=Number(slider.value);update()});
+  speed.addEventListener("input",update);
+  play.addEventListener("click",()=>{running=!running;play.textContent=running?"⏸ Tạm dừng":"▶ Tiếp tục";update()});
+  reset.addEventListener("click",()=>{angle=model.start;running=true;play.textContent="⏸ Tạm dừng";update()});
+  update();
+  active.push({step:time=>{
+   if(!last)last=time;
+   const dt=Math.min((time-last)/1000,.05);last=time;
+   if(running){angle=(angle+(8+Number(speed.value)*3)*dt)%360;update()}
+  }});
+ }
+ const frame=time=>{active.forEach(item=>item.step(time));requestAnimationFrame(frame)};
+ if(active.length)requestAnimationFrame(frame);
+})();
+</script>
 
 </body></html>
