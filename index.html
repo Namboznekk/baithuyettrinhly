@@ -378,6 +378,26 @@ body.presentation-mode .present-tools:hover{opacity:1}
 .eclipse-diagram .stage-status{position:relative;z-index:2;margin-top:4px;text-align:center;color:#ffe2a4;font-size:11px;font-weight:800;letter-spacing:.5px}
 @media(max-width:760px){.eclipse-diagram .phenomenon-stage{height:265px!important}.eclipse-diagram .range-label{grid-template-columns:1fr;gap:5px}}
 
+
+/* Observation motion model: clear Earth artwork and visible orbit slider */
+.motion-lesson .earth-motion-stage{height:370px!important;min-height:370px;overflow:hidden}
+.motion-lesson .earth-revolution{animation:none!important;transform-origin:50% 50%;will-change:transform}
+.motion-lesson .earth-globe{width:58px!important;height:58px!important;left:50%;top:-29px!important;margin-left:-29px!important;background:none!important;overflow:visible!important;box-shadow:0 0 22px #69d8ff99!important;animation:none!important}
+.motion-lesson .motion-earth-art{display:block;width:100%;height:100%;border-radius:50%;filter:drop-shadow(0 0 5px #62d9ff99);animation:motionEarthSpin 18s linear infinite}
+.motion-lesson .earth-globe>i,.motion-lesson .earth-globe>b{display:none!important}
+.motion-lesson .earth-label-mini{position:absolute;left:50%;top:63px;transform:translateX(-50%);white-space:nowrap;color:#e3efff;font-size:9px;font-weight:800;letter-spacing:1px}
+.motion-lesson .moon-mini-orbit{animation:none!important;transform-origin:50% 50%;will-change:transform}
+.motion-lesson .moon-mini{width:15px;height:15px;top:-7px;margin-left:-7.5px}
+.motion-controls-expanded{display:block!important;margin-top:14px;padding:16px 18px;border:1px solid #8fb8ef66;border-radius:15px;background:linear-gradient(130deg,#17284b,#111a36 65%,#201b43)}
+.motion-slider-heading{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;color:#ffe2a4;font-size:12px}
+.motion-slider-heading span{color:#bfeaff;font-size:11px}
+.motion-range-label{display:grid;grid-template-columns:190px 1fr;gap:14px;align-items:center;margin-top:13px;color:#e1eafa;font-size:12px}
+.motion-range-label input{width:100%;accent-color:#8cecff;cursor:pointer;min-height:24px}
+.motion-button-row{display:flex;gap:10px;margin-top:14px}
+.motion-button-row button{border:1px solid #9bb9ec88;border-radius:999px;padding:8px 15px;background:#263b66;color:white;font:inherit;font-size:12px;cursor:pointer}
+@keyframes motionEarthSpin{to{transform:rotate(360deg)}}
+@media(max-width:760px){.motion-lesson .earth-motion-stage{height:300px!important;min-height:300px}.motion-range-label{grid-template-columns:1fr;gap:5px}.motion-controls-expanded{padding:13px}}
+
 </style></head><body>
 <div class="progress-track" aria-hidden="true"><span id="readingProgress"></span></div>
 <header class="nav"><b>VẬT LÍ 10 <span>· CHUYÊN ĐỀ 06</span></b><nav><a href="#hanhtinh">Thiên thể</a><a href="#nhatthuc">Nhật thực</a><a href="#nguyetthuc">Nguyệt thực</a><a href="#thuytrieu">Thủy triều</a></nav></header>
@@ -428,13 +448,35 @@ body.presentation-mode .present-tools:hover{opacity:1}
  </section>
 <section class="section" id="hanhtinh"><div class="heading"><div class="eyebrow">01 / NỀN TẢNG KIẾN THỨC</div><h2>Trái Đất <em>và</em> Mặt Trăng</h2><p>Một số đặc điểm cơ bản giúp chúng ta hiểu rõ hơn về nhật thực và nguyệt thực.</p></div><div class="grid"><article class="card reveal"><div class="planet"></div><div class="eyebrow">HÀNH TINH</div><h3>Trái Đất</h3><p>Trái Đất có hình dạng gần như một khối cầu, hơi dẹt ở hai cực Bắc và Nam.</p><div class="stats"><div><strong>6.371 km</strong><small>Bán kính trung bình</small></div><div><strong>40.075 km</strong><small>Chu vi xích đạo</small></div><div><strong>510 triệu km²</strong><small>Diện tích bề mặt</small></div><div><strong>5,97 × 10²⁴ kg</strong><small>Khối lượng</small></div></div></article><article class="card reveal"><div class="planet moon"></div><div class="eyebrow">VỆ TINH TỰ NHIÊN</div><h3>Mặt Trăng</h3><p>Là vệ tinh tự nhiên duy nhất của Trái Đất, có kích thước nhỏ hơn Trái Đất khoảng 4 lần.</p><div class="stats"><div><strong>384.000 km</strong><small>Khoảng cách trung bình đến Trái Đất</small></div></div></article></div><div class="motion-lesson reveal" aria-label="Mô phỏng Trái Đất tự quay và quay quanh Mặt Trời">
  <div class="motion-title"><b>QUAN SÁT CHUYỂN ĐỘNG THỰC TẾ</b><span>Hai chuyển động khác nhau của Trái Đất</span></div>
- <div class="earth-motion-stage">
+ <div class="earth-motion-stage" id="earthMotionStage">
   <div class="sun-core"><span>MẶT TRỜI</span></div><div class="earth-orbit-path"></div>
-  <div class="earth-revolution"><div class="earth-globe"><i></i><b></b></div><div class="moon-mini-orbit"><i class="moon-mini"></i></div></div>
+  <div class="earth-revolution" id="earthRevolution">
+   <div class="earth-globe" id="motionEarth">
+    <svg class="motion-earth-art" viewBox="0 0 100 100" role="img" aria-label="Quả địa cầu có đại dương và các lục địa">
+     <defs><radialGradient id="motionOcean" cx="30%" cy="25%"><stop stop-color="#a7f4e5"/><stop offset=".42" stop-color="#278fbd"/><stop offset="1" stop-color="#09265e"/></radialGradient><clipPath id="motionEarthClip"><circle cx="50" cy="50" r="47"/></clipPath></defs>
+     <circle cx="50" cy="50" r="48" fill="url(#motionOcean)" stroke="#b9f3ff" stroke-width="2"/>
+     <g clip-path="url(#motionEarthClip)" fill="#76d59b" stroke="#c8f4b5" stroke-width="1">
+      <path d="M8 25 19 14 34 12 43 20 55 19 61 30 54 38 57 47 46 52 42 65 32 59 28 47 16 43Z"/>
+      <path d="M42 58 54 60 61 73 56 91 47 97 41 81 37 69Z"/>
+      <path d="M65 24 76 18 88 24 94 36 85 43 80 55 71 51 66 39Z"/>
+      <path d="M72 62 82 59 91 67 87 79 77 83 70 74Z"/>
+     </g>
+     <circle cx="50" cy="50" r="47" fill="url(#motionShade)"/>
+     <defs><linearGradient id="motionShade"><stop offset="0" stop-color="#06142d" stop-opacity="0"/><stop offset=".62" stop-color="#06142d" stop-opacity=".05"/><stop offset="1" stop-color="#02091f" stop-opacity=".78"/></linearGradient></defs>
+    </svg>
+    <span class="earth-label-mini">TRÁI ĐẤT</span>
+   </div>
+   <div class="moon-mini-orbit" id="moonMiniOrbit"><i class="moon-mini"></i></div>
+  </div>
   <div class="motion-axis"></div>
-  <div class="motion-caption"><span>↻ Trái Đất quay quanh trục</span><span>⟲ Trái Đất quay quanh Mặt Trời</span><span>· Mặt Trăng quay quanh Trái Đất</span></div>
+  <div class="motion-caption"><span>↻ Trái Đất tự quay quanh trục</span><span>⟲ Trái Đất quay quanh Mặt Trời</span><span>· Mặt Trăng quay quanh Trái Đất</span></div>
  </div>
- <div class="motion-controls"><button type="button" data-motion-toggle>⏸ Tạm dừng</button><button type="button" data-motion-restart>↻ Chạy lại</button></div>
+ <div class="motion-controls motion-controls-expanded">
+  <div class="motion-slider-heading"><b>ĐIỀU KHIỂN CHUYỂN ĐỘNG</b><span data-motion-readout>Vị trí quỹ đạo: 0°</span></div>
+  <label class="motion-range-label">Di chuyển trên quỹ đạo <input type="range" min="0" max="360" step="1" value="0" data-motion-position aria-label="Điều chỉnh vị trí Trái Đất trên quỹ đạo quanh Mặt Trời"></label>
+  <label class="motion-range-label">Tốc độ chuyển động <input type="range" min="1" max="10" step="1" value="5" data-motion-speed aria-label="Điều chỉnh tốc độ chuyển động"></label>
+  <div class="motion-button-row"><button type="button" data-motion-toggle>⏸ Tạm dừng</button><button type="button" data-motion-restart>↻ Đặt lại</button></div>
+ </div>
  <p class="motion-explain"><b>Phân biệt:</b> Tự quay quanh trục tạo ra ngày và đêm; chuyển động quanh Mặt Trời tạo nên một năm (khoảng 365,25 ngày). Mặt Trăng là vệ tinh quay quanh Trái Đất.</p>
 </div><div class="note reveal"><b>Chuyển động và quỹ đạo:</b><p>Trái Đất tự quay quanh trục với chu kì khoảng 24 giờ và quay quanh Mặt Trời với chu kì khoảng 365,25 ngày. Mặt phẳng quỹ đạo của Mặt Trăng nghiêng khoảng 5° so với mặt phẳng quỹ đạo Trái Đất quanh Mặt Trời. Vì vậy, không phải tháng nào cũng có nhật thực hoặc nguyệt thực.</p></div></section>
 <section class="section dark" id="nhatthuc"><div class="heading"><div class="eyebrow">02 / HIỆN TƯỢNG THIÊN VĂN</div><h2>Nhật <em>thực</em></h2><p>Nhật thực xảy ra khi Mặt Trăng đi vào vị trí giữa Mặt Trời và Trái Đất, che khuất ánh sáng Mặt Trời và tạo bóng lên bề mặt Trái Đất.</p></div><div class="diagram eclipse-diagram solar-diagram">
@@ -577,23 +619,35 @@ if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
 </script>
 
 <script>
-/* Accessible pause/restart controls for the educational motion models */
-document.querySelectorAll('.motion-controls').forEach(panel=>{
- const stage=panel.previousElementSibling;
- const pause=panel.querySelector('[data-motion-toggle]');
- const restart=panel.querySelector('[data-motion-restart]');
- pause.addEventListener('click',()=>{
-  const paused=stage.classList.toggle('is-paused');
-  pause.textContent=paused?'▶ Tiếp tục':'⏸ Tạm dừng';
- });
- restart.addEventListener('click',()=>{
-  stage.classList.remove('is-paused');
-  stage.querySelectorAll('*').forEach(el=>{
-   el.style.animation='none';void el.offsetWidth;el.style.animation='';
-  });
-  pause.textContent='⏸ Tạm dừng';
- });
-});
+/* Accessible, user-controlled Earth and Moon orbital model */
+(()=>{
+ const stage=document.getElementById('earthMotionStage');
+ if(!stage)return;
+ const earth=document.getElementById('earthRevolution');
+ const moon=document.getElementById('moonMiniOrbit');
+ const slider=document.querySelector('[data-motion-position]');
+ const speed=document.querySelector('[data-motion-speed]');
+ const readout=document.querySelector('[data-motion-readout]');
+ const pause=document.querySelector('[data-motion-toggle]');
+ const reset=document.querySelector('[data-motion-restart]');
+ let angle=0,moonAngle=0,running=true,last=0;
+ const paint=()=>{
+  earth.style.transform='rotate('+angle+'deg)';
+  moon.style.transform='rotate('+moonAngle+'deg)';
+  slider.value=String(Math.round(angle)%360);
+  readout.textContent='Vị trí quỹ đạo: '+Math.round(angle)+'°';
+ };
+ slider.addEventListener('input',()=>{angle=Number(slider.value);moonAngle=(angle*3)%360;paint()});
+ pause.addEventListener('click',()=>{running=!running;pause.textContent=running?'⏸ Tạm dừng':'▶ Tiếp tục'});
+ reset.addEventListener('click',()=>{angle=0;moonAngle=0;running=true;pause.textContent='⏸ Tạm dừng';paint()});
+ const tick=time=>{
+  if(!last)last=time;
+  const dt=Math.min((time-last)/1000,.05);last=time;
+  if(running){const rate=Number(speed.value);angle=(angle+rate*4*dt)%360;moonAngle=(moonAngle+rate*12*dt)%360;paint()}
+  requestAnimationFrame(tick);
+ };
+ paint();requestAnimationFrame(tick);
+})();
 </script>
 
 
