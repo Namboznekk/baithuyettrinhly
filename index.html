@@ -292,10 +292,10 @@ body.presentation-mode .present-tools:hover{opacity:1}
 
 /* FIXED ORBIT + CLEAN SVG ECLIPSE MODELS */
 .solar-system-stage{position:absolute;inset:0;z-index:3}
-.solar-system-stage .hero-sun{left:50%;top:50%;transform:translate(-50%,-50%);width:clamp(76px,9vw,112px);height:clamp(76px,9vw,112px)}
-.solar-system-stage .sun-corona{left:calc(50% - 68px);top:calc(50% - 68px);width:136px;height:136px}
-.solar-orbit-track{position:absolute;left:50%;top:50%;width:min(78%,460px);height:min(78%,350px);transform:translate(-50%,-50%);border:1px dashed #9ecbff99;border-radius:50%;box-shadow:0 0 28px #7abaff18}
-.earth-revolution-hero{position:absolute;left:50%;top:50%;width:min(78%,460px);height:min(78%,350px);transform:translate(-50%,-50%);border-radius:50%;animation:earthAroundSun 18s linear infinite}
+.solar-system-stage .hero-sun{left:50%;top:50%;margin-left:-56px;margin-top:-56px;transform:none;width:112px;height:112px}
+.solar-system-stage .sun-corona{left:50%;top:50%;margin-left:-68px;margin-top:-68px;width:136px;height:136px}
+.solar-orbit-track{position:absolute;left:50%;top:50%;width:min(76%,340px);height:min(76%,340px);transform:translate(-50%,-50%);border:1px dashed #9ecbff99;border-radius:50%;box-shadow:0 0 28px #7abaff18}
+.earth-revolution-hero{position:absolute;left:50%;top:50%;width:min(76%,340px);height:min(76%,340px);transform:translate(-50%,-50%);border-radius:50%;animation:earthAroundSun 18s linear infinite}
 .earth-revolution-hero .earth-system{position:absolute;left:50%;top:0;width:1px;height:1px;transform:translate(-50%,-50%)}
 .earth-revolution-hero .hero-earth{width:70px;height:70px;left:-35px;top:-35px;animation:earthDay 5s linear infinite}
 .earth-revolution-hero .earth-glow{width:115px;height:115px;left:-57px;top:-57px}
@@ -312,14 +312,14 @@ body.presentation-mode .present-tools:hover{opacity:1}
 .solar-moon-mover{animation:solarMoonAcross 6s ease-in-out infinite;transform-box:view-box;transform-origin:0 0}
 @keyframes solarMoonAcross{0%,100%{transform:translate(360px,0)}50%{transform:translate(560px,0)}}
 .lunar-moon-mover{animation:lunarMoonIntoShadow 7s ease-in-out infinite;transform-box:view-box;transform-origin:0 0}
-@keyframes lunarMoonIntoShadow{0%,100%{transform:translate(335px,0)}50%{transform:translate(175px,0)}}
+@keyframes lunarMoonIntoShadow{0%,100%{transform:translate(800px,0)}50%{transform:translate(640px,0)}}
 .eclipse-diagram>svg{display:none!important}
 @media(max-width:760px){
  .solar-orbit-track,.earth-revolution-hero{width:78%;height:58%}
  .earth-revolution-hero .hero-earth{width:54px;height:54px;left:-27px;top:-27px}
  .earth-revolution-hero .moon-orbit{width:94px;height:94px;left:-47px;top:-47px}
- .solar-system-stage .hero-sun{width:66px;height:66px}
- .solar-system-stage .sun-corona{left:calc(50% - 48px);top:calc(50% - 48px);width:96px;height:96px}
+ .solar-system-stage .hero-sun{width:66px;height:66px;margin-left:-33px;margin-top:-33px}
+ .solar-system-stage .sun-corona{margin-left:-48px;margin-top:-48px;width:96px;height:96px}
  .phenomenon-stage{height:245px;padding:3px}
  .phenomenon-stage .stage-status{font-size:8px}
 }
