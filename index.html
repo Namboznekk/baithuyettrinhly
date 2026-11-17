@@ -426,14 +426,19 @@ body.presentation-mode .present-tools:hover{opacity:1}
  <div class="diagram-heading"><b>MÔ PHỎNG NHẬT THỰC</b><span>Mặt Trăng di chuyển vào giữa Mặt Trời và Trái Đất</span></div>
  <div class="phenomenon-stage solar-motion">
   <svg viewBox="0 0 900 300" role="img" aria-label="Nhật thực: Mặt Trăng đi vào giữa Mặt Trời và Trái Đất, bóng Mặt Trăng chạm bề mặt Trái Đất">
-   <defs><radialGradient id="sSun"><stop stop-color="#fffbd0"/><stop offset=".55" stop-color="#ffd15e"/><stop offset="1" stop-color="#e96d32"/></radialGradient><radialGradient id="sEarth"><stop stop-color="#a5f2e5"/><stop offset=".55" stop-color="#2589bd"/><stop offset="1" stop-color="#10265b"/></radialGradient><radialGradient id="sMoon"><stop stop-color="#fff"/><stop offset=".72" stop-color="#c0cada"/><stop offset="1" stop-color="#66718a"/></radialGradient></defs>
+   <defs><radialGradient id="sSun"><stop stop-color="#fffbd0"/><stop offset=".55" stop-color="#ffd15e"/><stop offset="1" stop-color="#e96d32"/></radialGradient><radialGradient id="sEarth"><stop stop-color="#a5f2e5"/><stop offset=".55" stop-color="#2589bd"/><stop offset="1" stop-color="#10265b"/></radialGradient><clipPath id="solarEarthClip"><circle cx="760" cy="150" r="65"/></clipPath><radialGradient id="sMoon"><stop stop-color="#fff"/><stop offset=".72" stop-color="#c0cada"/><stop offset="1" stop-color="#66718a"/></radialGradient></defs>
    <path d="M175 125 L760 85 L760 215 L175 175Z" fill="#ffd36d" opacity=".10"/>
    <path class="solar-shadow-cone" d="M445 142 L755 145 L755 155 L445 158Z" fill="#050817" opacity=".95"/>
    <circle cx="145" cy="150" r="54" fill="url(#sSun)"/><circle cx="145" cy="150" r="66" fill="none" stroke="#ffdc85" stroke-width="2" opacity=".55"/>
    <g stroke="#ffd47a" stroke-width="4"><path d="M145 65v-15M145 235v-15M60 150H45M245 150h-15M85 90L73 78M217 222l-12-12M205 90l12-12M73 222l12-12"/></g>
-   <circle cx="760" cy="150" r="65" fill="url(#sEarth)" stroke="#a4e9ff" stroke-width="3"/>
-   <path d="M715 113q24-22 45-3t35 4q-8 25-29 27t-22 33q-24-13-28-34Z" fill="#78d39b"/>
-   <path d="M760 87v126" stroke="#e5fbff" opacity=".22" stroke-width="2"/>
+   <circle cx="760" cy="150" r="65" fill="url(#sEarth)" stroke="#b8f4ff" stroke-width="3"/>
+   <g clip-path="url(#solarEarthClip)" fill="#79d39a" stroke="#c4f3ae" stroke-opacity=".55" stroke-width="1.5">
+    <path d="M700 111 718 91 743 94 755 108 773 110 781 126 769 139 770 154 753 161 746 179 731 170 727 150 711 140Z"/>
+    <path d="M744 164 759 169 766 188 758 210 747 224 738 205 735 185Z"/>
+    <path d="M770 105 789 94 812 105 825 122 817 141 799 144 790 160 778 149 775 131Z"/>
+   </g>
+   <circle cx="760" cy="150" r="65" fill="none" stroke="#e7fbff" stroke-opacity=".28" stroke-width="2"/>
+   <path d="M760 86a64 64 0 0 1 0 128" fill="none" stroke="#02091b" stroke-opacity=".45" stroke-width="15"/>
    <g class="solar-moon-mover"><circle cx="0" cy="150" r="25" fill="url(#sMoon)" stroke="#f2f5ff" stroke-width="2"/><circle cx="-7" cy="142" r="5" fill="#8d99ae" opacity=".5"/><circle cx="8" cy="158" r="4" fill="#8d99ae" opacity=".45"/></g>
    <g fill="#f5e6c4" font-size="19" font-weight="800" text-anchor="middle"><text x="145" y="255">MẶT TRỜI</text><text x="760" y="255">TRÁI ĐẤT</text></g>
    <text x="450" y="75" fill="#dbe7ff" font-size="16" text-anchor="middle">MẶT TRĂNG DI CHUYỂN QUA ĐƯỜNG ÁNH SÁNG</text>
@@ -465,14 +470,19 @@ body.presentation-mode .present-tools:hover{opacity:1}
  <div class="diagram-heading"><b>MÔ PHỎNG NGUYỆT THỰC</b><span>Mặt Trăng đi qua vùng bóng của Trái Đất</span></div>
  <div class="phenomenon-stage lunar-motion">
   <svg viewBox="0 0 900 300" role="img" aria-label="Nguyệt thực: Trái Đất nằm giữa Mặt Trời và Mặt Trăng; Mặt Trăng đi vào bóng Trái Đất và chuyển đỏ cam">
-   <defs><radialGradient id="lSun2"><stop stop-color="#fffbd0"/><stop offset=".55" stop-color="#ffd15e"/><stop offset="1" stop-color="#e96d32"/></radialGradient><radialGradient id="lEarth2"><stop stop-color="#a5f2e5"/><stop offset=".55" stop-color="#2589bd"/><stop offset="1" stop-color="#10265b"/></radialGradient><radialGradient id="lMoon2"><stop stop-color="#ffffff"/><stop offset=".6" stop-color="#c9d2df"/><stop offset="1" stop-color="#647187"/></radialGradient></defs>
+   <defs><radialGradient id="lSun2"><stop stop-color="#fffbd0"/><stop offset=".55" stop-color="#ffd15e"/><stop offset="1" stop-color="#e96d32"/></radialGradient><radialGradient id="lEarth2"><stop stop-color="#a5f2e5"/><stop offset=".55" stop-color="#2589bd"/><stop offset="1" stop-color="#10265b"/></radialGradient><clipPath id="lunarEarthClip"><circle cx="465" cy="150" r="67"/></clipPath><radialGradient id="lMoon2"><stop stop-color="#ffffff"/><stop offset=".6" stop-color="#c9d2df"/><stop offset="1" stop-color="#647187"/></radialGradient></defs>
    <path d="M200 105 L465 122 L835 133 L835 167 L465 178 L200 195Z" fill="#ffd36d" opacity=".10"/>
    <path d="M515 93 L835 128 L835 172 L515 207Z" fill="#030715" opacity=".96" stroke="#a99cff" stroke-dasharray="8 6" stroke-width="2"/>
    <circle cx="145" cy="150" r="54" fill="url(#lSun2)"/><circle cx="145" cy="150" r="66" fill="none" stroke="#ffdc85" stroke-width="2" opacity=".55"/>
    <g stroke="#ffd47a" stroke-width="4"><path d="M145 65v-15M145 235v-15M60 150H45M245 150h-15M85 90L73 78M217 222l-12-12M205 90l12-12M73 222l12-12"/></g>
-   <circle cx="465" cy="150" r="67" fill="url(#lEarth2)" stroke="#a4e9ff" stroke-width="3"/>
-   <path d="M415 120q24-27 48-5t36 4q-8 27-31 29t-21 36q-26-15-32-39Z" fill="#79d39a"/>
-   <path d="M465 84v132" stroke="#e5fbff" opacity=".22" stroke-width="2"/>
+   <circle cx="465" cy="150" r="67" fill="url(#lEarth2)" stroke="#b8f4ff" stroke-width="3"/>
+   <g clip-path="url(#lunarEarthClip)" fill="#79d39a" stroke="#c4f3ae" stroke-opacity=".55" stroke-width="1.5">
+    <path d="M404 108 423 88 448 91 460 106 478 108 486 126 474 139 475 154 458 161 451 179 436 170 432 150 416 140Z"/>
+    <path d="M439 164 454 169 461 188 453 210 442 224 433 205 430 185Z"/>
+    <path d="M475 103 494 92 516 103 530 122 522 141 504 144 495 160 483 149 480 131Z"/>
+   </g>
+   <circle cx="465" cy="150" r="67" fill="none" stroke="#e7fbff" stroke-opacity=".28" stroke-width="2"/>
+   <path d="M465 83a66 66 0 0 1 0 134" fill="none" stroke="#02091b" stroke-opacity=".45" stroke-width="16"/>
    <g class="lunar-moon-mover"><circle cx="0" cy="150" r="28" fill="url(#lMoon2)" stroke="#ffd0ae" stroke-width="2"/><circle cx="-8" cy="142" r="6" fill="#9d5960" opacity=".5"/><circle cx="8" cy="160" r="4" fill="#9d5960" opacity=".5"/></g>
    <g fill="#f5e6c4" font-size="19" font-weight="800" text-anchor="middle"><text x="145" y="255">MẶT TRỜI</text><text x="465" y="255">TRÁI ĐẤT</text></g>
    <text x="650" y="75" fill="#dbe7ff" font-size="16" text-anchor="middle">MẶT TRĂNG ĐI QUA VÙNG BÓNG</text>
