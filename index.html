@@ -367,7 +367,7 @@ body.presentation-mode .present-tools:hover{opacity:1}
 /* FINAL FIX: both eclipse models use a real Moon orbit around Earth */
 .eclipse-diagram .phenomenon-stage{height:340px!important;overflow:hidden!important}
 .eclipse-diagram .phenomenon-stage svg{height:100%!important;width:100%!important;max-height:none!important;display:block!important}
-.eclipse-diagram .phenomenon-stage .solar-moon-mover,
+.eclipse-diagram .phenomenon-stage svg circle{animation:none!important;transform:none!important}\n.eclipse-diagram .phenomenon-stage .solar-moon-mover,
 .eclipse-diagram .phenomenon-stage .lunar-moon-mover{animation:none!important;transform-box:view-box;will-change:transform}
 .eclipse-diagram .phenomenon-stage .solar-shadow-cone{transition:opacity .18s ease,d .18s ease}
 .eclipse-diagram .phenomenon-stage .lunar-moon-mover circle:first-child{transition:filter .2s ease,fill .2s ease}
@@ -442,7 +442,7 @@ body.presentation-mode .present-tools:hover{opacity:1}
  <div class="phenomenon-stage solar-motion">
   <svg viewBox="0 0 900 300" role="img" aria-label="Nhật thực: Mặt Trăng đi vào giữa Mặt Trời và Trái Đất, bóng Mặt Trăng chạm bề mặt Trái Đất">
    <defs><radialGradient id="sSun"><stop stop-color="#fffbd0"/><stop offset=".55" stop-color="#ffd15e"/><stop offset="1" stop-color="#e96d32"/></radialGradient><radialGradient id="sEarth"><stop stop-color="#a5f2e5"/><stop offset=".55" stop-color="#2589bd"/><stop offset="1" stop-color="#10265b"/></radialGradient><clipPath id="solarEarthClip"><circle cx="760" cy="150" r="65"/></clipPath><radialGradient id="sMoon"><stop stop-color="#fff"/><stop offset=".72" stop-color="#c0cada"/><stop offset="1" stop-color="#66718a"/></radialGradient></defs>
-   <circle cx="760" cy="150" r="145" fill="none" stroke="#a9c8ff" stroke-opacity=".48" stroke-width="2" stroke-dasharray="7 8"/>
+   <circle cx="760" cy="150" r="115" fill="none" stroke="#a9c8ff" stroke-opacity=".48" stroke-width="2" stroke-dasharray="7 8"/>
    <path d="M175 125 L760 85 L760 215 L175 175Z" fill="#ffd36d" opacity=".10"/>
    <path class="solar-shadow-cone" d="M445 142 L755 145 L755 155 L445 158Z" fill="#050817" opacity=".95"/>
    <circle cx="145" cy="150" r="54" fill="url(#sSun)"/><circle cx="145" cy="150" r="66" fill="none" stroke="#ffdc85" stroke-width="2" opacity=".55"/>
@@ -499,7 +499,7 @@ body.presentation-mode .present-tools:hover{opacity:1}
    </g>
    <circle cx="465" cy="150" r="67" fill="none" stroke="#e7fbff" stroke-opacity=".28" stroke-width="2"/>
    <path d="M465 83a66 66 0 0 1 0 134" fill="none" stroke="#02091b" stroke-opacity=".45" stroke-width="16"/>
-   <circle cx="465" cy="150" r="145" fill="none" stroke="#a9c8ff" stroke-opacity=".48" stroke-width="2" stroke-dasharray="7 8"/>
+   <circle cx="465" cy="150" r="115" fill="none" stroke="#a9c8ff" stroke-opacity=".48" stroke-width="2" stroke-dasharray="7 8"/>
    <g class="lunar-moon-mover" id="lunarMoonMover" transform="translate(610 150)"><circle cx="0" cy="0" r="28" fill="url(#lMoon2)" stroke="#ffd0ae" stroke-width="2"/><circle cx="-8" cy="-8" r="6" fill="#9d5960" opacity=".5"/><circle cx="8" cy="10" r="4" fill="#9d5960" opacity=".5"/></g>
    <g fill="#f5e6c4" font-size="19" font-weight="800" text-anchor="middle"><text x="145" y="255">MẶT TRỜI</text><text x="465" y="255">TRÁI ĐẤT</text></g>
    <text x="650" y="75" fill="#dbe7ff" font-size="16" text-anchor="middle">MẶT TRĂNG ĐI QUA VÙNG BÓNG</text>
@@ -602,8 +602,8 @@ document.querySelectorAll('.motion-controls').forEach(panel=>{
 /* Interactive orbital motion: Moon revolves around Earth in both eclipse models. */
 (()=>{
  const models=[
-  {key:"solar",earthX:760,earthY:150,radius:145,start:180,moonRadius:25},
-  {key:"lunar",earthX:465,earthY:150,radius:145,start:0,moonRadius:28}
+  {key:"solar",earthX:760,earthY:150,radius:115,start:180,moonRadius:25},
+  {key:"lunar",earthX:465,earthY:150,radius:115,start:0,moonRadius:28}
  ];
  const active=[];
  for(const model of models){
@@ -625,7 +625,7 @@ document.querySelectorAll('.motion-controls').forEach(panel=>{
    const x=model.earthX+Math.cos(rad)*model.radius;
    const y=model.earthY+Math.sin(rad)*model.radius;
    mover.setAttribute("transform","translate("+x.toFixed(2)+" "+y.toFixed(2)+")");
-   slider.value=String(Math.round(angle)%360);
+   slider.value=String(Math.round(angle));
    const aligned=model.key==="solar"
     ? x<model.earthX-65&&Math.abs(y-model.earthY)<25
     : x>model.earthX+67&&Math.abs(y-model.earthY)<34;
