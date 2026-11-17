@@ -348,6 +348,21 @@ body.presentation-mode .present-tools:hover{opacity:1}
 .planet:not(.moon):after{content:"";position:absolute;inset:0;border-radius:50%;background:linear-gradient(105deg,transparent 38%,#06142e77 72%,#020817aa);border:1px solid #a6eaff88}
 @media(max-width:760px){.range-label{grid-template-columns:1fr;gap:5px}.orbit-control-panel{padding:14px}.orbit-control-top{font-size:11px}}
 
+
+/* FINAL ORBIT MODEL + RECOGNIZABLE EARTH GLOBE */
+.earth-revolution-hero{animation:earthAroundSun 22s linear infinite!important}
+.earth-revolution-hero .earth-system{left:50%;top:0}
+.earth-revolution-hero .moon-orbit{animation:moonRevolution 5.5s linear infinite!important}
+.hero-cinematic .hero-earth{width:82px!important;height:82px!important;left:-41px!important;top:-41px!important;padding:0!important;background:none!important;overflow:visible!important;box-shadow:none!important;animation:none!important}
+.hero-cinematic .hero-earth .earth-artwork{display:block;position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 13px #62d9ff99);animation:globeSpin 24s linear infinite}
+.hero-cinematic .hero-earth>i,.hero-cinematic .hero-earth>b{display:none!important}
+@keyframes globeSpin{to{transform:rotate(360deg)}}
+.hero-cinematic .earth-label{top:52px!important;left:-30px!important}
+.solar-system-stage:after{content:"MẶT TRĂNG CÙNG TRÁI ĐẤT CHUYỂN ĐỘNG QUANH MẶT TRỜI";position:absolute;left:50%;bottom:8px;transform:translateX(-50%);white-space:nowrap;color:#d9eaff;font-size:8px;letter-spacing:1px;text-shadow:0 1px 6px #020611}
+.orbit-control-panel{display:block!important;visibility:visible!important;opacity:1!important}
+.phenomenon-stage{isolation:isolate}
+@media(max-width:760px){.hero-cinematic .hero-earth{width:60px!important;height:60px!important;left:-30px!important;top:-30px!important}.solar-system-stage:after{font-size:6px;letter-spacing:.3px;max-width:95%;white-space:normal;text-align:center}}
+
 </style></head><body>
 <div class="progress-track" aria-hidden="true"><span id="readingProgress"></span></div>
 <header class="nav"><b>VẬT LÍ 10 <span>· CHUYÊN ĐỀ 06</span></b><nav><a href="#hanhtinh">Thiên thể</a><a href="#nhatthuc">Nhật thực</a><a href="#nguyetthuc">Nguyệt thực</a><a href="#thuytrieu">Thủy triều</a></nav></header>
@@ -365,16 +380,29 @@ body.presentation-mode .present-tools:hover{opacity:1}
  <div class="solar-system-stage">
   <div class="sun-corona"></div><div class="hero-sun"><span></span></div>
   <div class="solar-orbit-track"></div>
-  <div class="earth-revolution-hero"><div class="earth-system"><div class="earth-glow"></div><div class="hero-earth"><i></i><b></b></div><div class="earth-label">TRÁI ĐẤT</div>
+  <div class="earth-revolution-hero"><div class="earth-system"><div class="earth-glow"></div><div class="hero-earth">
+ <svg class="earth-artwork" viewBox="0 0 120 120" role="img" aria-label="Hình minh họa Trái Đất">
+  <defs>
+   <radialGradient id="heroOcean" cx="30%" cy="24%"><stop stop-color="#c5fff0"/><stop offset=".25" stop-color="#4bc3d8"/><stop offset=".62" stop-color="#176ba8"/><stop offset="1" stop-color="#06183f"/></radialGradient>
+   <linearGradient id="heroLand"><stop stop-color="#a9ef9d"/><stop offset=".55" stop-color="#48b879"/><stop offset="1" stop-color="#16704f"/></linearGradient>
+   <clipPath id="heroGlobeClip"><circle cx="60" cy="60" r="56"/></clipPath>
+   <linearGradient id="heroNight"><stop offset=".42" stop-color="#061333" stop-opacity="0"/><stop offset="1" stop-color="#02091f" stop-opacity=".8"/></linearGradient>
+  </defs>
+  <circle cx="60" cy="60" r="56" fill="url(#heroOcean)" stroke="#b7f5ff" stroke-width="1.5"/>
+  <g clip-path="url(#heroGlobeClip)" fill="url(#heroLand)" stroke="#c1f4a7" stroke-opacity=".45" stroke-width="1">
+   <path d="M10 25 21 16 34 17 40 25 51 27 54 38 47 45 44 57 35 61 31 75 23 70 19 56 11 48Z"/>
+   <path d="M42 67 53 70 59 82 55 96 48 111 41 99 38 84Z"/>
+   <path d="M62 22 73 16 87 20 92 29 105 31 111 44 103 54 91 53 84 62 75 57 68 47 58 43Z"/>
+   <path d="M77 62 91 58 103 66 101 82 92 93 83 88 78 76Z"/>
+   <path d="M103 96 112 91 118 98 113 108 105 108Z"/>
+  </g>
+  <circle cx="60" cy="60" r="56" fill="url(#heroNight)"/>
+  <path d="M60 4a56 56 0 0 1 0 112" fill="none" stroke="#c3f5ff" stroke-opacity=".25"/>
+ </svg>
+</div><div class="earth-label">TRÁI ĐẤT</div>
    <div class="moon-orbit"><div class="moon-holder"><div class="hero-moon"><i></i></div></div></div>
   </div></div>
   <div class="sun-caption">MẶT TRỜI</div>
- </div>
- <div class="orbit-control-panel" data-control="hero">
-  <div class="orbit-control-top"><b>TỰ ĐIỀU CHỈNH QUỸ ĐẠO TRÁI ĐẤT</b><span class="control-readout" aria-live="polite">Vị trí: 45</span></div>
-  <label class="range-label">Điều chỉnh vị trí <input data-position type="range" min="0" max="359" value="45" step="1"></label>
-  <label class="range-label">Tốc độ chuyển động <input data-speed type="range" min="1" max="10" value="5"></label>
-  <div class="control-actions"><button type="button" data-play>⏸ Tạm dừng</button><button type="button" data-reset>↺ Đặt lại</button></div>
  </div>
  <div class="solar-flare flare-one"></div><div class="solar-flare flare-two"></div>
  <div class="hero-label label-sun">MẶT TRỜI</div><div class="hero-label label-moon">MẶT TRĂNG · QUỸ ĐẠO</div>
@@ -541,40 +569,5 @@ document.querySelectorAll('.motion-controls').forEach(panel=>{
 });
 </script>
 
-<script>
-/* User-controlled motion: sliders set positions; play/pause and reset are explicit. */
-(()=>{
- const hero=document.querySelector(".hero-cinematic .earth-revolution-hero");
- const hp=document.querySelector('[data-control="hero"]');
- if(hero&&hp){
-  const pos=hp.querySelector("[data-position]"),speed=hp.querySelector("[data-speed]"),play=hp.querySelector("[data-play]"),reset=hp.querySelector("[data-reset]"),read=hp.querySelector(".control-readout");
-  let angle=45,running=true,timer=null;
-  const draw=()=>{hero.style.transform="translate(-50%,-50%) rotate("+angle+"deg)";pos.value=String(Math.round(angle));read.textContent="Góc quỹ đạo: "+Math.round(angle)+"°"};
-  const stop=()=>{running=false;clearInterval(timer);play.textContent="▶ Tiếp tục"};
-  const start=()=>{running=true;play.textContent="⏸ Tạm dừng";clearInterval(timer);timer=setInterval(()=>{angle=(angle+Number(speed.value)*.12)%360;draw()},30)};
-  pos.addEventListener("input",()=>{angle=Number(pos.value);draw()});
-  speed.addEventListener("input",()=>{if(running)start()});
-  play.addEventListener("click",()=>running?stop():start());
-  reset.addEventListener("click",()=>{angle=45;draw();start()});draw();start();
- }
- function wire(kind,selector,min,max,initial){
-  const stage=document.querySelector(selector),panel=document.querySelector('[data-control="'+kind+'"]');
-  if(!stage||!panel)return;
-  const mover=stage.querySelector(kind==="solar"?".solar-moon-mover":".lunar-moon-mover");
-  const slider=panel.querySelector("[data-position]"),speed=panel.querySelector("[data-speed]"),play=panel.querySelector("[data-play]"),reset=panel.querySelector("[data-reset]"),read=panel.querySelector(".control-readout");
-  let x=initial,running=true,timer=null;
-  const draw=()=>{mover.setAttribute("transform","translate("+x+",0)");slider.value=String(x);read.textContent="Vị trí Mặt Trăng: "+x;if(kind==="lunar")mover.classList.toggle("in-shadow",x>=515&&x<=835)};
-  const updateShadow=()=>{if(kind==="solar"){const path=stage.querySelector(".solar-shadow-cone");if(path){const left=x+25;path.setAttribute("d","M"+left+" 125 L755 145 L755 155 L"+left+" 175Z")}}};
-  const stop=()=>{running=false;clearInterval(timer);play.textContent="▶ Tiếp tục"};
-  const start=()=>{running=true;play.textContent="⏸ Tạm dừng";clearInterval(timer);timer=setInterval(()=>{x+=Number(speed.value)*1.1;if(x>max)x=min;draw();updateShadow()},35)};
-  slider.addEventListener("input",()=>{x=Number(slider.value);draw();updateShadow()});
-  speed.addEventListener("input",()=>{if(running)start()});
-  play.addEventListener("click",()=>running?stop():start());
-  reset.addEventListener("click",()=>{x=initial;draw();updateShadow();start()});
-  draw();updateShadow();start();
- }
- wire("solar",".solar-motion",360,560,460);
- wire("lunar",".lunar-motion",500,880,850);
-})();
-</script>
+
 </body></html>
