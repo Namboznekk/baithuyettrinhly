@@ -289,6 +289,42 @@ body.presentation-mode .present-tools:hover{opacity:1}
 @media(max-width:760px){.earth-motion-stage{height:280px}.earth-orbit-path,.earth-revolution{width:220px;height:170px}.earth-revolution{margin-left:-110px;margin-top:-85px}.earth-globe{top:-18px;width:36px;height:36px;margin-left:-18px}.moon-mini-orbit{width:60px;height:60px;top:-12px;margin-left:-30px}.motion-axis{display:none}.motion-caption{font-size:9px;gap:7px}.phenomenon-stage{height:230px}.phenomenon-stage .stage-sun{width:48px;height:48px;margin-top:-24px}.phenomenon-stage .stage-earth{width:58px;height:58px;margin:-29px}.phenomenon-stage .moving-moon{width:24px;height:24px;margin:-12px}.phenomenon-stage .stage-earth b,.phenomenon-stage .stage-sun b{font-size:8px}.phenomenon-stage .moving-moon b{font-size:8px;top:34px}.phenomenon-stage .stage-status{font-size:8px}}
 @media(prefers-reduced-motion:reduce){.earth-revolution,.earth-globe:before,.moon-mini-orbit,.solar-motion .moving-moon,.lunar-motion .moving-moon,.phenomenon-stage:after{animation:none!important}}
 
+
+/* FIXED ORBIT + CLEAN SVG ECLIPSE MODELS */
+.solar-system-stage{position:absolute;inset:0;z-index:3}
+.solar-system-stage .hero-sun{left:50%;top:50%;transform:translate(-50%,-50%);width:clamp(76px,9vw,112px);height:clamp(76px,9vw,112px)}
+.solar-system-stage .sun-corona{left:calc(50% - 68px);top:calc(50% - 68px);width:136px;height:136px}
+.solar-orbit-track{position:absolute;left:50%;top:50%;width:min(78%,460px);height:min(78%,350px);transform:translate(-50%,-50%);border:1px dashed #9ecbff99;border-radius:50%;box-shadow:0 0 28px #7abaff18}
+.earth-revolution-hero{position:absolute;left:50%;top:50%;width:min(78%,460px);height:min(78%,350px);transform:translate(-50%,-50%);border-radius:50%;animation:earthAroundSun 18s linear infinite}
+.earth-revolution-hero .earth-system{position:absolute;left:50%;top:0;width:1px;height:1px;transform:translate(-50%,-50%)}
+.earth-revolution-hero .hero-earth{width:70px;height:70px;left:-35px;top:-35px;animation:earthDay 5s linear infinite}
+.earth-revolution-hero .earth-glow{width:115px;height:115px;left:-57px;top:-57px}
+.earth-revolution-hero .earth-label{position:absolute;left:-35px;top:45px;white-space:nowrap;color:#d8edff;font-size:10px;font-weight:800;letter-spacing:1px}
+.earth-revolution-hero .moon-orbit{width:120px;height:120px;left:-60px;top:-60px;border:1px dashed #dce7ff99}
+.earth-revolution-hero .moon-holder{top:-15px;width:30px;height:30px;margin-left:-15px}
+.earth-revolution-hero .hero-moon{width:30px;height:30px}
+.sun-caption{position:absolute;left:50%;top:calc(50% + 70px);transform:translateX(-50%);white-space:nowrap;color:#ffe2a4;font-size:10px;letter-spacing:2px;font-weight:800}
+@keyframes earthAroundSun{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.hero-cinematic .hero-label.label-sun{display:none}
+.phenomenon-stage{height:310px;padding:8px}
+.phenomenon-stage svg{display:block!important;width:100%;height:100%;max-height:none}
+.phenomenon-stage .stage-status{font-size:10px;letter-spacing:1px}
+.solar-moon-mover{animation:solarMoonAcross 6s ease-in-out infinite;transform-box:view-box;transform-origin:0 0}
+@keyframes solarMoonAcross{0%,100%{transform:translate(360px,0)}50%{transform:translate(560px,0)}}
+.lunar-moon-mover{animation:lunarMoonIntoShadow 7s ease-in-out infinite;transform-box:view-box;transform-origin:0 0}
+@keyframes lunarMoonIntoShadow{0%,100%{transform:translate(335px,0)}50%{transform:translate(175px,0)}}
+.eclipse-diagram>svg{display:none!important}
+@media(max-width:760px){
+ .solar-orbit-track,.earth-revolution-hero{width:78%;height:58%}
+ .earth-revolution-hero .hero-earth{width:54px;height:54px;left:-27px;top:-27px}
+ .earth-revolution-hero .moon-orbit{width:94px;height:94px;left:-47px;top:-47px}
+ .solar-system-stage .hero-sun{width:66px;height:66px}
+ .solar-system-stage .sun-corona{left:calc(50% - 48px);top:calc(50% - 48px);width:96px;height:96px}
+ .phenomenon-stage{height:245px;padding:3px}
+ .phenomenon-stage .stage-status{font-size:8px}
+}
+@media(prefers-reduced-motion:reduce){.earth-revolution-hero,.solar-moon-mover,.lunar-moon-mover{animation:none!important}}
+
 </style></head><body>
 <div class="progress-track" aria-hidden="true"><span id="readingProgress"></span></div>
 <header class="nav"><b>VẬT LÍ 10 <span>· CHUYÊN ĐỀ 06</span></b><nav><a href="#hanhtinh">Thiên thể</a><a href="#nhatthuc">Nhật thực</a><a href="#nguyetthuc">Nguyệt thực</a><a href="#thuytrieu">Thủy triều</a></nav></header>
@@ -303,11 +339,15 @@ body.presentation-mode .present-tools:hover{opacity:1}
  <div class="hero-nebula nebula-a"></div><div class="hero-nebula nebula-b"></div>
  <div class="hero-starfield"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
  <div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div><div class="hero-orbit orbit-three"></div>
- <div class="sun-corona"></div><div class="hero-sun"><span></span></div>
- <div class="solar-flare flare-one"></div><div class="solar-flare flare-two"></div>
- <div class="earth-system"><div class="earth-glow"></div><div class="hero-earth"><i></i><b></b></div><div class="earth-label">TRÁI ĐẤT</div>
-  <div class="moon-orbit"><div class="moon-holder"><div class="hero-moon"><i></i></div></div></div>
+ <div class="solar-system-stage">
+  <div class="sun-corona"></div><div class="hero-sun"><span></span></div>
+  <div class="solar-orbit-track"></div>
+  <div class="earth-revolution-hero"><div class="earth-system"><div class="earth-glow"></div><div class="hero-earth"><i></i><b></b></div><div class="earth-label">TRÁI ĐẤT</div>
+   <div class="moon-orbit"><div class="moon-holder"><div class="hero-moon"><i></i></div></div></div>
+  </div></div>
+  <div class="sun-caption">MẶT TRỜI</div>
  </div>
+ <div class="solar-flare flare-one"></div><div class="solar-flare flare-two"></div>
  <div class="hero-label label-sun">MẶT TRỜI</div><div class="hero-label label-moon">MẶT TRĂNG · QUỸ ĐẠO</div>
  <div class="hero-data"><span><i class="live-dot"></i> HỆ THIÊN THỂ ĐANG CHUYỂN ĐỘNG</span><span>MÔ HÌNH MINH HỌA</span></div>
  <div class="meteor meteor-one"></div><div class="meteor meteor-two"></div>
@@ -327,10 +367,22 @@ body.presentation-mode .present-tools:hover{opacity:1}
 </div><div class="note reveal"><b>Chuyển động và quỹ đạo:</b><p>Trái Đất tự quay quanh trục với chu kì khoảng 24 giờ và quay quanh Mặt Trời với chu kì khoảng 365,25 ngày. Mặt phẳng quỹ đạo của Mặt Trăng nghiêng khoảng 5° so với mặt phẳng quỹ đạo Trái Đất quanh Mặt Trời. Vì vậy, không phải tháng nào cũng có nhật thực hoặc nguyệt thực.</p></div></section>
 <section class="section dark" id="nhatthuc"><div class="heading"><div class="eyebrow">02 / HIỆN TƯỢNG THIÊN VĂN</div><h2>Nhật <em>thực</em></h2><p>Nhật thực xảy ra khi Mặt Trăng đi vào vị trí giữa Mặt Trời và Trái Đất, che khuất ánh sáng Mặt Trời và tạo bóng lên bề mặt Trái Đất.</p></div><div class="diagram eclipse-diagram solar-diagram">
  <div class="diagram-heading"><b>MÔ PHỎNG NHẬT THỰC</b><span>Mặt Trăng di chuyển vào giữa Mặt Trời và Trái Đất</span></div>
- <div class="phenomenon-stage solar-motion" role="img" aria-label="Mặt Trăng chuyển động vào giữa Mặt Trời và Trái Đất, bóng Mặt Trăng quét lên Trái Đất">
-  <div class="light-beams"></div><div class="stage-sun"><i></i><b>MẶT TRỜI</b></div><div class="stage-earth"><i></i><b>TRÁI ĐẤT</b></div>
-  <div class="solar-shadow"></div><div class="moving-moon"><i></i><b>MẶT TRĂNG</b></div>
-  <div class="stage-path"></div><div class="stage-status">MẶT TRĂNG ĐANG ĐI VÀO GIỮA · BÓNG ĐỔ LÊN TRÁI ĐẤT</div>
+ <div class="phenomenon-stage solar-motion">
+  <svg viewBox="0 0 900 300" role="img" aria-label="Nhật thực: Mặt Trăng đi vào giữa Mặt Trời và Trái Đất, bóng Mặt Trăng chạm bề mặt Trái Đất">
+   <defs><radialGradient id="sSun"><stop stop-color="#fffbd0"/><stop offset=".55" stop-color="#ffd15e"/><stop offset="1" stop-color="#e96d32"/></radialGradient><radialGradient id="sEarth"><stop stop-color="#a5f2e5"/><stop offset=".55" stop-color="#2589bd"/><stop offset="1" stop-color="#10265b"/></radialGradient><radialGradient id="sMoon"><stop stop-color="#fff"/><stop offset=".72" stop-color="#c0cada"/><stop offset="1" stop-color="#66718a"/></radialGradient></defs>
+   <path d="M175 125 L760 85 L760 215 L175 175Z" fill="#ffd36d" opacity=".10"/>
+   <path class="solar-shadow-cone" d="M445 142 L755 145 L755 155 L445 158Z" fill="#050817" opacity=".95"/>
+   <circle cx="145" cy="150" r="54" fill="url(#sSun)"/><circle cx="145" cy="150" r="66" fill="none" stroke="#ffdc85" stroke-width="2" opacity=".55"/>
+   <g stroke="#ffd47a" stroke-width="4"><path d="M145 65v-15M145 235v-15M60 150H45M245 150h-15M85 90L73 78M217 222l-12-12M205 90l12-12M73 222l12-12"/></g>
+   <circle cx="760" cy="150" r="65" fill="url(#sEarth)" stroke="#a4e9ff" stroke-width="3"/>
+   <path d="M715 113q24-22 45-3t35 4q-8 25-29 27t-22 33q-24-13-28-34Z" fill="#78d39b"/>
+   <path d="M760 87v126" stroke="#e5fbff" opacity=".22" stroke-width="2"/>
+   <g class="solar-moon-mover"><circle cx="0" cy="150" r="25" fill="url(#sMoon)" stroke="#f2f5ff" stroke-width="2"/><circle cx="-7" cy="142" r="5" fill="#8d99ae" opacity=".5"/><circle cx="8" cy="158" r="4" fill="#8d99ae" opacity=".45"/></g>
+   <g fill="#f5e6c4" font-size="19" font-weight="800" text-anchor="middle"><text x="145" y="255">MẶT TRỜI</text><text x="760" y="255">TRÁI ĐẤT</text></g>
+   <text x="450" y="75" fill="#dbe7ff" font-size="16" text-anchor="middle">MẶT TRĂNG DI CHUYỂN QUA ĐƯỜNG ÁNH SÁNG</text>
+   <text x="610" y="120" fill="#ffdca0" font-size="14" text-anchor="middle">BÓNG MẶT TRĂNG</text>
+  </svg>
+  <div class="stage-status">THỨ TỰ: MẶT TRỜI → MẶT TRĂNG → TRÁI ĐẤT</div>
  </div>
  <svg viewBox="0 0 900 300" role="img" aria-labelledby="solarTitle solarDesc">
  <title id="solarTitle">Sơ đồ hiện tượng nhật thực</title><desc id="solarDesc">Mặt Trời ở bên trái, Mặt Trăng nằm giữa và che ánh sáng, bóng tối của Mặt Trăng chiếu lên Trái Đất ở bên phải.</desc>
@@ -348,11 +400,22 @@ body.presentation-mode .present-tools:hover{opacity:1}
  </div><div class="types"><article class="card reveal"><div class="eyebrow">01 · TOÀN PHẦN</div><h3>Nhật thực toàn phần</h3><p>Mặt Trăng che khuất hoàn toàn đĩa Mặt Trời đối với người quan sát trong vùng bóng tối.</p></article><article class="card reveal"><div class="eyebrow">02 · MỘT PHẦN</div><h3>Nhật thực một phần</h3><p>Mặt Trăng chỉ che khuất một phần đĩa Mặt Trời, khiến Mặt Trời trông như bị khuyết.</p></article><article class="card reveal"><div class="eyebrow">03 · HÌNH KHUYÊN</div><h3>Nhật thực hình khuyên</h3><p>Mặt Trăng có kích thước biểu kiến nhỏ hơn Mặt Trời, để lộ một vòng sáng bao quanh.</p></article></div><div class="timeline"><div><b>01 · Bắt đầu</b><p>Mặt Trăng bắt đầu che khuất Mặt Trời; phần bị che tăng dần.</p></div><div><b>02 · Cực đại</b><p>Hiện tượng đạt mức che khuất lớn nhất.</p></div><div><b>03 · Kết thúc</b><p>Mặt Trăng di chuyển ra khỏi vùng che khuất.</p></div></div><div class="warning"><b>Lưu ý an toàn:</b> Không nhìn trực tiếp vào Mặt Trời khi quan sát nhật thực. Chỉ sử dụng thiết bị quan sát chuyên dụng, đúng tiêu chuẩn.</div></section>
 <section class="section" id="nguyetthuc"><div class="heading"><div class="eyebrow">03 / HIỆN TƯỢNG THIÊN VĂN</div><h2>Nguyệt <em>thực</em></h2><p>Nguyệt thực xảy ra khi Trái Đất nằm giữa Mặt Trời và Mặt Trăng, khiến Mặt Trăng đi vào vùng bóng của Trái Đất.</p></div><div class="diagram eclipse-diagram lunar-diagram">
  <div class="diagram-heading"><b>MÔ PHỎNG NGUYỆT THỰC</b><span>Mặt Trăng đi qua vùng bóng của Trái Đất</span></div>
- <div class="phenomenon-stage lunar-motion" role="img" aria-label="Trái Đất nằm giữa Mặt Trời và Mặt Trăng; Mặt Trăng đi vào vùng bóng và chuyển đỏ cam">
-  <div class="light-beams"></div><div class="stage-sun"><i></i><b>MẶT TRỜI</b></div><div class="earth-shadow"></div>
-  <div class="stage-earth"><i></i><b>TRÁI ĐẤT</b></div><div class="lunar-path"></div>
-  <div class="moving-moon"><i></i><b>MẶT TRĂNG</b></div>
-  <div class="stage-status">MẶT TRĂNG ĐI VÀO BÓNG TRÁI ĐẤT · CÓ THỂ CHUYỂN ĐỎ CAM</div>
+ <div class="phenomenon-stage lunar-motion">
+  <svg viewBox="0 0 900 300" role="img" aria-label="Nguyệt thực: Trái Đất nằm giữa Mặt Trời và Mặt Trăng; Mặt Trăng đi vào bóng Trái Đất và chuyển đỏ cam">
+   <defs><radialGradient id="lSun2"><stop stop-color="#fffbd0"/><stop offset=".55" stop-color="#ffd15e"/><stop offset="1" stop-color="#e96d32"/></radialGradient><radialGradient id="lEarth2"><stop stop-color="#a5f2e5"/><stop offset=".55" stop-color="#2589bd"/><stop offset="1" stop-color="#10265b"/></radialGradient><radialGradient id="lMoon2"><stop stop-color="#fff0d9"/><stop offset=".6" stop-color="#e58b66"/><stop offset="1" stop-color="#773a49"/></radialGradient></defs>
+   <path d="M200 105 L465 122 L835 133 L835 167 L465 178 L200 195Z" fill="#ffd36d" opacity=".10"/>
+   <path d="M515 93 L835 128 L835 172 L515 207Z" fill="#030715" opacity=".96" stroke="#a99cff" stroke-dasharray="8 6" stroke-width="2"/>
+   <circle cx="145" cy="150" r="54" fill="url(#lSun2)"/><circle cx="145" cy="150" r="66" fill="none" stroke="#ffdc85" stroke-width="2" opacity=".55"/>
+   <g stroke="#ffd47a" stroke-width="4"><path d="M145 65v-15M145 235v-15M60 150H45M245 150h-15M85 90L73 78M217 222l-12-12M205 90l12-12M73 222l12-12"/></g>
+   <circle cx="465" cy="150" r="67" fill="url(#lEarth2)" stroke="#a4e9ff" stroke-width="3"/>
+   <path d="M415 120q24-27 48-5t36 4q-8 27-31 29t-21 36q-26-15-32-39Z" fill="#79d39a"/>
+   <path d="M465 84v132" stroke="#e5fbff" opacity=".22" stroke-width="2"/>
+   <g class="lunar-moon-mover"><circle cx="0" cy="150" r="28" fill="url(#lMoon2)" stroke="#ffd0ae" stroke-width="2"/><circle cx="-8" cy="142" r="6" fill="#9d5960" opacity=".5"/><circle cx="8" cy="160" r="4" fill="#9d5960" opacity=".5"/></g>
+   <g fill="#f5e6c4" font-size="19" font-weight="800" text-anchor="middle"><text x="145" y="255">MẶT TRỜI</text><text x="465" y="255">TRÁI ĐẤT</text></g>
+   <text x="650" y="75" fill="#dbe7ff" font-size="16" text-anchor="middle">MẶT TRĂNG ĐI QUA VÙNG BÓNG</text>
+   <text x="690" y="112" fill="#ffdca0" font-size="14" text-anchor="middle">BÓNG TRÁI ĐẤT</text>
+  </svg>
+  <div class="stage-status">THỨ TỰ: MẶT TRỜI → TRÁI ĐẤT → MẶT TRĂNG</div>
  </div>
  <svg viewBox="0 0 900 300" role="img" aria-labelledby="lunarTitle lunarDesc">
  <title id="lunarTitle">Sơ đồ hiện tượng nguyệt thực</title><desc id="lunarDesc">Trái Đất nằm giữa Mặt Trời và Mặt Trăng. Bóng tối của Trái Đất kéo dài ra phía sau và che khuất Mặt Trăng.</desc>
